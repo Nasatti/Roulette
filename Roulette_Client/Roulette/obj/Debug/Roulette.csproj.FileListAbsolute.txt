@@ -1,0 +1,11 @@
+C:\Users\ricca\Source\Repos\Nasatti\Roulette\Roulette_Client\Roulette\bin\Debug\Roulette.exe.config
+C:\Users\ricca\Source\Repos\Nasatti\Roulette\Roulette_Client\Roulette\bin\Debug\Roulette.exe
+C:\Users\ricca\Source\Repos\Nasatti\Roulette\Roulette_Client\Roulette\bin\Debug\Roulette.pdb
+C:\Users\ricca\Source\Repos\Nasatti\Roulette\Roulette_Client\Roulette\obj\Debug\Roulette.csproj.AssemblyReference.cache
+C:\Users\ricca\Source\Repos\Nasatti\Roulette\Roulette_Client\Roulette\obj\Debug\Roulette.csproj.SuggestedBindingRedirects.cache
+C:\Users\ricca\Source\Repos\Nasatti\Roulette\Roulette_Client\Roulette\obj\Debug\Roulette.Properties.Resources.resources
+C:\Users\ricca\Source\Repos\Nasatti\Roulette\Roulette_Client\Roulette\obj\Debug\Roulette.csproj.GenerateResource.cache
+C:\Users\ricca\Source\Repos\Nasatti\Roulette\Roulette_Client\Roulette\obj\Debug\Roulette.csproj.CoreCompileInputs.cache
+C:\Users\ricca\Source\Repos\Nasatti\Roulette\Roulette_Client\Roulette\obj\Debug\Roulette.exe
+C:\Users\ricca\Source\Repos\Nasatti\Roulette\Roulette_Client\Roulette\obj\Debug\Roulette.pdb
+C:\Users\ricca\Source\Repos\Nasatti\Roulette\Roulette_Client\Roulette\obj\Debug\Roulette.Client.resources
