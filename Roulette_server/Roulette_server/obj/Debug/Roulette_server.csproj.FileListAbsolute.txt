@@ -1,0 +1,9 @@
+C:\Users\ricca\source\repos\Nasatti\Roulette\Roulette_server\Roulette_server\bin\Debug\Roulette_server.exe
+C:\Users\ricca\source\repos\Nasatti\Roulette\Roulette_server\Roulette_server\bin\Debug\Roulette_server.pdb
+C:\Users\ricca\source\repos\Nasatti\Roulette\Roulette_server\Roulette_server\obj\Debug\Roulette_server.csproj.AssemblyReference.cache
+C:\Users\ricca\source\repos\Nasatti\Roulette\Roulette_server\Roulette_server\obj\Debug\Roulette_server.Server.resources
+C:\Users\ricca\source\repos\Nasatti\Roulette\Roulette_server\Roulette_server\obj\Debug\Roulette_server.Properties.Resources.resources
+C:\Users\ricca\source\repos\Nasatti\Roulette\Roulette_server\Roulette_server\obj\Debug\Roulette_server.csproj.GenerateResource.cache
+C:\Users\ricca\source\repos\Nasatti\Roulette\Roulette_server\Roulette_server\obj\Debug\Roulette_server.csproj.CoreCompileInputs.cache
+C:\Users\ricca\source\repos\Nasatti\Roulette\Roulette_server\Roulette_server\obj\Debug\Roulette_server.exe
+C:\Users\ricca\source\repos\Nasatti\Roulette\Roulette_server\Roulette_server\obj\Debug\Roulette_server.pdb
