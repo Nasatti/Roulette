@@ -28,40 +28,48 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Server));
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.timer_palla = new System.Windows.Forms.Timer(this.components);
+            this.timer_velocità = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
-            // pictureBox1
+            // timer_palla
             // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(12, 12);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(433, 369);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
+            this.timer_palla.Enabled = true;
+            this.timer_palla.Interval = 50;
+            this.timer_palla.Tick += new System.EventHandler(this.timer_palla_Tick);
+            // 
+            // timer_velocità
+            // 
+            this.timer_velocità.Enabled = true;
+            this.timer_velocità.Interval = 3000;
+            this.timer_velocità.Tick += new System.EventHandler(this.timer_velocità_Tick);
             // 
             // Server
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DarkGreen;
-            this.ClientSize = new System.Drawing.Size(458, 406);
-            this.Controls.Add(this.pictureBox1);
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ClientSize = new System.Drawing.Size(657, 628);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MinimumSize = new System.Drawing.Size(476, 453);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.MaximumSize = new System.Drawing.Size(675, 675);
+            this.MinimumSize = new System.Drawing.Size(675, 675);
             this.Name = "Server";
             this.Text = "Server";
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.Load += new System.EventHandler(this.Server_Load);
+            this.Paint += new System.Windows.Forms.PaintEventHandler(this.Server_Paint);
+            this.Resize += new System.EventHandler(this.Server_Resize);
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Timer timer_palla;
+        private System.Windows.Forms.Timer timer_velocità;
     }
 }
 
