@@ -31,7 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Server));
             this.timer_palla = new System.Windows.Forms.Timer(this.components);
-            this.timer_velocità = new System.Windows.Forms.Timer(this.components);
+            this.timer_avvio = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // timer_palla
@@ -40,11 +40,10 @@
             this.timer_palla.Interval = 50;
             this.timer_palla.Tick += new System.EventHandler(this.timer_palla_Tick);
             // 
-            // timer_velocità
+            // timer_avvio
             // 
-            this.timer_velocità.Enabled = true;
-            this.timer_velocità.Interval = 3000;
-            this.timer_velocità.Tick += new System.EventHandler(this.timer_velocità_Tick);
+            this.timer_avvio.Interval = 3000;
+            this.timer_avvio.Tick += new System.EventHandler(this.timer_velocità_Tick);
             // 
             // Server
             // 
@@ -69,7 +68,7 @@
 
         #endregion
         private System.Windows.Forms.Timer timer_palla;
-        private System.Windows.Forms.Timer timer_velocità;
+        private System.Windows.Forms.Timer timer_avvio;
     }
 }
 

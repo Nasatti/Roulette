@@ -35,13 +35,14 @@ namespace Roulette_server
                 {
                     timer_palla.Interval += r.Next(0, 5);
                 }
-                else if (timer_palla.Interval <= r.Next(800, 1000))
+                else if (timer_palla.Interval <= r.Next(500, 700))
                 {
                     timer_palla.Interval += r.Next(30, 70);
                 }
                 else
                 {
                     timer_palla.Enabled = false;
+                    timer_avvio.Enabled = true;
                 }
             }
             angle += 9.729f;
@@ -53,7 +54,8 @@ namespace Roulette_server
         private void Server_Load(object sender, EventArgs e)
         {
             img = Image.FromFile(@"../../img/palla.png");
-            angle = r.Next(0, 360);
+            int n = r.Next(0, 36);
+            angle = n * 10;
         }
 
 
@@ -78,17 +80,11 @@ namespace Roulette_server
 
         private void timer_velocità_Tick(object sender, EventArgs e)
         {
-            //Random r = new Random();
-            //if (timer_palla.Interval > 100)
-            //{
-            //    timer_palla.Interval = r.Next(timer_palla.Interval - 100, timer_palla.Interval - 10);
-            //    timer_velocità.Interval = 500;
-            //}
-            //else
-            //{
-            //    timer_velocità.Enabled = false;
-            //    timer_palla.Enabled = false;
-            //}
+            int n = r.Next(0, 37);
+            angle = n * 9.729f;
+            timer_palla.Interval = 50;
+            timer_palla.Enabled = true;
+            timer_avvio.Enabled = false;
         }
     }
 }
