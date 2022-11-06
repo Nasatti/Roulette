@@ -84,18 +84,18 @@ namespace Roulette
             this.b34 = new System.Windows.Forms.Button();
             this.b35 = new System.Windows.Forms.Button();
             this.b0 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
-            this.button10 = new System.Windows.Forms.Button();
-            this.button9 = new System.Windows.Forms.Button();
-            this.button8 = new System.Windows.Forms.Button();
-            this.button11 = new System.Windows.Forms.Button();
-            this.button12 = new System.Windows.Forms.Button();
-            this.button13 = new System.Windows.Forms.Button();
-            this.button14 = new System.Windows.Forms.Button();
+            this.b1st12 = new System.Windows.Forms.Button();
+            this.b2nd12 = new System.Windows.Forms.Button();
+            this.b3rd12 = new System.Windows.Forms.Button();
+            this.b1to18 = new System.Windows.Forms.Button();
+            this.b19to36 = new System.Windows.Forms.Button();
+            this.bfila3 = new System.Windows.Forms.Button();
+            this.bfila1 = new System.Windows.Forms.Button();
+            this.bfila2 = new System.Windows.Forms.Button();
+            this.bred = new System.Windows.Forms.Button();
+            this.bblack = new System.Windows.Forms.Button();
+            this.beven = new System.Windows.Forms.Button();
+            this.bodd = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.fish = new System.Windows.Forms.ImageList(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.fish1)).BeginInit();
@@ -325,6 +325,7 @@ namespace Roulette
             this.b1.TabIndex = 1;
             this.b1.Text = "1";
             this.b1.UseVisualStyleBackColor = false;
+            this.b1.Click += new System.EventHandler(this.b1_Click);
             // 
             // b2
             // 
@@ -338,6 +339,7 @@ namespace Roulette
             this.b2.TabIndex = 2;
             this.b2.Text = "2";
             this.b2.UseVisualStyleBackColor = false;
+            this.b2.Click += new System.EventHandler(this.b2_Click);
             // 
             // b6
             // 
@@ -351,6 +353,7 @@ namespace Roulette
             this.b6.TabIndex = 3;
             this.b6.Text = "6";
             this.b6.UseVisualStyleBackColor = false;
+            this.b6.Click += new System.EventHandler(this.b6_Click);
             // 
             // b4
             // 
@@ -364,6 +367,7 @@ namespace Roulette
             this.b4.TabIndex = 4;
             this.b4.Text = "4";
             this.b4.UseVisualStyleBackColor = false;
+            this.b4.Click += new System.EventHandler(this.b4_Click);
             // 
             // b9
             // 
@@ -377,6 +381,7 @@ namespace Roulette
             this.b9.TabIndex = 11;
             this.b9.Text = "9";
             this.b9.UseVisualStyleBackColor = false;
+            this.b9.Click += new System.EventHandler(this.b9_Click);
             // 
             // b5
             // 
@@ -390,6 +395,7 @@ namespace Roulette
             this.b5.TabIndex = 5;
             this.b5.Text = "5";
             this.b5.UseVisualStyleBackColor = false;
+            this.b5.Click += new System.EventHandler(this.b5_Click);
             // 
             // b7
             // 
@@ -403,6 +409,7 @@ namespace Roulette
             this.b7.TabIndex = 12;
             this.b7.Text = "7";
             this.b7.UseVisualStyleBackColor = false;
+            this.b7.Click += new System.EventHandler(this.b7_Click);
             // 
             // b8
             // 
@@ -416,6 +423,7 @@ namespace Roulette
             this.b8.TabIndex = 13;
             this.b8.Text = "8";
             this.b8.UseVisualStyleBackColor = false;
+            this.b8.Click += new System.EventHandler(this.b8_Click);
             // 
             // b12
             // 
@@ -429,6 +437,7 @@ namespace Roulette
             this.b12.TabIndex = 14;
             this.b12.Text = "12";
             this.b12.UseVisualStyleBackColor = false;
+            this.b12.Click += new System.EventHandler(this.b12_Click);
             // 
             // b10
             // 
@@ -442,6 +451,7 @@ namespace Roulette
             this.b10.TabIndex = 15;
             this.b10.Text = "10";
             this.b10.UseVisualStyleBackColor = false;
+            this.b10.Click += new System.EventHandler(this.b10_Click);
             // 
             // b11
             // 
@@ -455,6 +465,7 @@ namespace Roulette
             this.b11.TabIndex = 16;
             this.b11.Text = "11";
             this.b11.UseVisualStyleBackColor = false;
+            this.b11.Click += new System.EventHandler(this.b11_Click);
             // 
             // b15
             // 
@@ -468,6 +479,7 @@ namespace Roulette
             this.b15.TabIndex = 17;
             this.b15.Text = "15";
             this.b15.UseVisualStyleBackColor = false;
+            this.b15.Click += new System.EventHandler(this.b15_Click);
             // 
             // b13
             // 
@@ -481,6 +493,7 @@ namespace Roulette
             this.b13.TabIndex = 18;
             this.b13.Text = "13";
             this.b13.UseVisualStyleBackColor = false;
+            this.b13.Click += new System.EventHandler(this.b13_Click);
             // 
             // b18
             // 
@@ -494,6 +507,7 @@ namespace Roulette
             this.b18.TabIndex = 20;
             this.b18.Text = "18";
             this.b18.UseVisualStyleBackColor = false;
+            this.b18.Click += new System.EventHandler(this.b18_Click);
             // 
             // b14
             // 
@@ -507,6 +521,7 @@ namespace Roulette
             this.b14.TabIndex = 19;
             this.b14.Text = "14";
             this.b14.UseVisualStyleBackColor = false;
+            this.b14.Click += new System.EventHandler(this.b14_Click);
             // 
             // b16
             // 
@@ -520,6 +535,7 @@ namespace Roulette
             this.b16.TabIndex = 21;
             this.b16.Text = "16";
             this.b16.UseVisualStyleBackColor = false;
+            this.b16.Click += new System.EventHandler(this.b16_Click);
             // 
             // b17
             // 
@@ -533,6 +549,7 @@ namespace Roulette
             this.b17.TabIndex = 22;
             this.b17.Text = "17";
             this.b17.UseVisualStyleBackColor = false;
+            this.b17.Click += new System.EventHandler(this.b17_Click);
             // 
             // b21
             // 
@@ -546,6 +563,7 @@ namespace Roulette
             this.b21.TabIndex = 23;
             this.b21.Text = "21";
             this.b21.UseVisualStyleBackColor = false;
+            this.b21.Click += new System.EventHandler(this.b21_Click);
             // 
             // b19
             // 
@@ -559,6 +577,7 @@ namespace Roulette
             this.b19.TabIndex = 24;
             this.b19.Text = "19";
             this.b19.UseVisualStyleBackColor = false;
+            this.b19.Click += new System.EventHandler(this.b19_Click);
             // 
             // b20
             // 
@@ -572,6 +591,7 @@ namespace Roulette
             this.b20.TabIndex = 25;
             this.b20.Text = "20";
             this.b20.UseVisualStyleBackColor = false;
+            this.b20.Click += new System.EventHandler(this.b20_Click);
             // 
             // b24
             // 
@@ -585,6 +605,7 @@ namespace Roulette
             this.b24.TabIndex = 26;
             this.b24.Text = "24";
             this.b24.UseVisualStyleBackColor = false;
+            this.b24.Click += new System.EventHandler(this.b24_Click);
             // 
             // b22
             // 
@@ -598,6 +619,7 @@ namespace Roulette
             this.b22.TabIndex = 27;
             this.b22.Text = "22";
             this.b22.UseVisualStyleBackColor = false;
+            this.b22.Click += new System.EventHandler(this.b22_Click);
             // 
             // b27
             // 
@@ -611,6 +633,7 @@ namespace Roulette
             this.b27.TabIndex = 29;
             this.b27.Text = "27";
             this.b27.UseVisualStyleBackColor = false;
+            this.b27.Click += new System.EventHandler(this.b27_Click);
             // 
             // b23
             // 
@@ -624,6 +647,7 @@ namespace Roulette
             this.b23.TabIndex = 28;
             this.b23.Text = "23";
             this.b23.UseVisualStyleBackColor = false;
+            this.b23.Click += new System.EventHandler(this.b23_Click);
             // 
             // b25
             // 
@@ -637,6 +661,7 @@ namespace Roulette
             this.b25.TabIndex = 30;
             this.b25.Text = "25";
             this.b25.UseVisualStyleBackColor = false;
+            this.b25.Click += new System.EventHandler(this.b25_Click);
             // 
             // b26
             // 
@@ -650,6 +675,7 @@ namespace Roulette
             this.b26.TabIndex = 31;
             this.b26.Text = "26";
             this.b26.UseVisualStyleBackColor = false;
+            this.b26.Click += new System.EventHandler(this.b26_Click);
             // 
             // b30
             // 
@@ -663,6 +689,7 @@ namespace Roulette
             this.b30.TabIndex = 32;
             this.b30.Text = "30";
             this.b30.UseVisualStyleBackColor = false;
+            this.b30.Click += new System.EventHandler(this.b30_Click);
             // 
             // b28
             // 
@@ -676,6 +703,7 @@ namespace Roulette
             this.b28.TabIndex = 33;
             this.b28.Text = "28";
             this.b28.UseVisualStyleBackColor = false;
+            this.b28.Click += new System.EventHandler(this.b28_Click);
             // 
             // b29
             // 
@@ -689,6 +717,7 @@ namespace Roulette
             this.b29.TabIndex = 34;
             this.b29.Text = "29";
             this.b29.UseVisualStyleBackColor = false;
+            this.b29.Click += new System.EventHandler(this.b29_Click);
             // 
             // b33
             // 
@@ -702,6 +731,7 @@ namespace Roulette
             this.b33.TabIndex = 35;
             this.b33.Text = "33";
             this.b33.UseVisualStyleBackColor = false;
+            this.b33.Click += new System.EventHandler(this.b33_Click);
             // 
             // b31
             // 
@@ -715,6 +745,7 @@ namespace Roulette
             this.b31.TabIndex = 36;
             this.b31.Text = "31";
             this.b31.UseVisualStyleBackColor = false;
+            this.b31.Click += new System.EventHandler(this.b31_Click);
             // 
             // b36
             // 
@@ -728,6 +759,7 @@ namespace Roulette
             this.b36.TabIndex = 38;
             this.b36.Text = "36";
             this.b36.UseVisualStyleBackColor = false;
+            this.b36.Click += new System.EventHandler(this.b36_Click);
             // 
             // b32
             // 
@@ -741,6 +773,7 @@ namespace Roulette
             this.b32.TabIndex = 37;
             this.b32.Text = "32";
             this.b32.UseVisualStyleBackColor = false;
+            this.b32.Click += new System.EventHandler(this.b32_Click);
             // 
             // b34
             // 
@@ -754,6 +787,7 @@ namespace Roulette
             this.b34.TabIndex = 39;
             this.b34.Text = "34";
             this.b34.UseVisualStyleBackColor = false;
+            this.b34.Click += new System.EventHandler(this.b34_Click);
             // 
             // b35
             // 
@@ -767,6 +801,7 @@ namespace Roulette
             this.b35.TabIndex = 40;
             this.b35.Text = "35";
             this.b35.UseVisualStyleBackColor = false;
+            this.b35.Click += new System.EventHandler(this.b35_Click);
             // 
             // b0
             // 
@@ -783,178 +818,189 @@ namespace Roulette
             this.b0.UseVisualStyleBackColor = false;
             this.b0.Click += new System.EventHandler(this.b0_Click);
             // 
-            // button3
+            // b1st12
             // 
-            this.button3.BackColor = System.Drawing.Color.Transparent;
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.ForeColor = System.Drawing.Color.White;
-            this.button3.Location = new System.Drawing.Point(125, 181);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(228, 56);
-            this.button3.TabIndex = 42;
-            this.button3.Text = "1st12";
-            this.button3.UseVisualStyleBackColor = false;
+            this.b1st12.BackColor = System.Drawing.Color.DarkGreen;
+            this.b1st12.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.b1st12.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.b1st12.ForeColor = System.Drawing.Color.White;
+            this.b1st12.Location = new System.Drawing.Point(125, 181);
+            this.b1st12.Name = "b1st12";
+            this.b1st12.Size = new System.Drawing.Size(228, 56);
+            this.b1st12.TabIndex = 42;
+            this.b1st12.Text = "1st12";
+            this.b1st12.UseVisualStyleBackColor = false;
+            this.b1st12.Click += new System.EventHandler(this.b1st12_Click);
             // 
-            // button4
+            // b2nd12
             // 
-            this.button4.BackColor = System.Drawing.Color.Transparent;
-            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.ForeColor = System.Drawing.Color.White;
-            this.button4.Location = new System.Drawing.Point(353, 181);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(228, 56);
-            this.button4.TabIndex = 43;
-            this.button4.Text = "2nd12";
-            this.button4.UseVisualStyleBackColor = false;
+            this.b2nd12.BackColor = System.Drawing.Color.DarkGreen;
+            this.b2nd12.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.b2nd12.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.b2nd12.ForeColor = System.Drawing.Color.White;
+            this.b2nd12.Location = new System.Drawing.Point(353, 181);
+            this.b2nd12.Name = "b2nd12";
+            this.b2nd12.Size = new System.Drawing.Size(228, 56);
+            this.b2nd12.TabIndex = 43;
+            this.b2nd12.Text = "2nd12";
+            this.b2nd12.UseVisualStyleBackColor = false;
+            this.b2nd12.Click += new System.EventHandler(this.b2nd12_Click);
             // 
-            // button5
+            // b3rd12
             // 
-            this.button5.BackColor = System.Drawing.Color.Transparent;
-            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button5.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button5.ForeColor = System.Drawing.Color.White;
-            this.button5.Location = new System.Drawing.Point(581, 181);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(228, 56);
-            this.button5.TabIndex = 44;
-            this.button5.Text = "3rd12";
-            this.button5.UseVisualStyleBackColor = false;
+            this.b3rd12.BackColor = System.Drawing.Color.DarkGreen;
+            this.b3rd12.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.b3rd12.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.b3rd12.ForeColor = System.Drawing.Color.White;
+            this.b3rd12.Location = new System.Drawing.Point(581, 181);
+            this.b3rd12.Name = "b3rd12";
+            this.b3rd12.Size = new System.Drawing.Size(228, 56);
+            this.b3rd12.TabIndex = 44;
+            this.b3rd12.Text = "3rd12";
+            this.b3rd12.UseVisualStyleBackColor = false;
+            this.b3rd12.Click += new System.EventHandler(this.b3rd12_Click);
             // 
-            // button6
+            // b1to18
             // 
-            this.button6.BackColor = System.Drawing.Color.Transparent;
-            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button6.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button6.ForeColor = System.Drawing.Color.White;
-            this.button6.Location = new System.Drawing.Point(125, 237);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(114, 56);
-            this.button6.TabIndex = 45;
-            this.button6.Text = "1to18";
-            this.button6.UseVisualStyleBackColor = false;
+            this.b1to18.BackColor = System.Drawing.Color.DarkGreen;
+            this.b1to18.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.b1to18.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.b1to18.ForeColor = System.Drawing.Color.White;
+            this.b1to18.Location = new System.Drawing.Point(125, 237);
+            this.b1to18.Name = "b1to18";
+            this.b1to18.Size = new System.Drawing.Size(114, 56);
+            this.b1to18.TabIndex = 45;
+            this.b1to18.Text = "1to18";
+            this.b1to18.UseVisualStyleBackColor = false;
+            this.b1to18.Click += new System.EventHandler(this.b1to18_Click);
             // 
-            // button7
+            // b19to36
             // 
-            this.button7.BackColor = System.Drawing.Color.Transparent;
-            this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button7.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button7.ForeColor = System.Drawing.Color.White;
-            this.button7.Location = new System.Drawing.Point(695, 237);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(114, 56);
-            this.button7.TabIndex = 46;
-            this.button7.Text = "19to36";
-            this.button7.UseVisualStyleBackColor = false;
+            this.b19to36.BackColor = System.Drawing.Color.DarkGreen;
+            this.b19to36.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.b19to36.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.b19to36.ForeColor = System.Drawing.Color.White;
+            this.b19to36.Location = new System.Drawing.Point(695, 237);
+            this.b19to36.Name = "b19to36";
+            this.b19to36.Size = new System.Drawing.Size(114, 56);
+            this.b19to36.TabIndex = 46;
+            this.b19to36.Text = "19to36";
+            this.b19to36.UseVisualStyleBackColor = false;
+            this.b19to36.Click += new System.EventHandler(this.b19to36_Click);
             // 
-            // button10
+            // bfila3
             // 
-            this.button10.BackColor = System.Drawing.Color.Transparent;
-            this.button10.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button10.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button10.ForeColor = System.Drawing.Color.White;
-            this.button10.Location = new System.Drawing.Point(809, 20);
-            this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(70, 56);
-            this.button10.TabIndex = 47;
-            this.button10.Text = "2to1";
-            this.button10.UseVisualStyleBackColor = false;
+            this.bfila3.BackColor = System.Drawing.Color.DarkGreen;
+            this.bfila3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bfila3.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bfila3.ForeColor = System.Drawing.Color.White;
+            this.bfila3.Location = new System.Drawing.Point(809, 20);
+            this.bfila3.Name = "bfila3";
+            this.bfila3.Size = new System.Drawing.Size(85, 56);
+            this.bfila3.TabIndex = 47;
+            this.bfila3.Text = "2to1";
+            this.bfila3.UseVisualStyleBackColor = false;
             // 
-            // button9
+            // bfila1
             // 
-            this.button9.BackColor = System.Drawing.Color.Transparent;
-            this.button9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button9.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button9.ForeColor = System.Drawing.Color.White;
-            this.button9.Location = new System.Drawing.Point(809, 125);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(70, 56);
-            this.button9.TabIndex = 48;
-            this.button9.Text = "2to1";
-            this.button9.UseVisualStyleBackColor = false;
+            this.bfila1.BackColor = System.Drawing.Color.DarkGreen;
+            this.bfila1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bfila1.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bfila1.ForeColor = System.Drawing.Color.White;
+            this.bfila1.Location = new System.Drawing.Point(809, 125);
+            this.bfila1.Name = "bfila1";
+            this.bfila1.Size = new System.Drawing.Size(85, 56);
+            this.bfila1.TabIndex = 48;
+            this.bfila1.Text = "2to1";
+            this.bfila1.UseVisualStyleBackColor = false;
+            this.bfila1.Click += new System.EventHandler(this.bfila1_Click);
             // 
-            // button8
+            // bfila2
             // 
-            this.button8.BackColor = System.Drawing.Color.Transparent;
-            this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button8.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button8.ForeColor = System.Drawing.Color.White;
-            this.button8.Location = new System.Drawing.Point(809, 72);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(70, 56);
-            this.button8.TabIndex = 49;
-            this.button8.Text = "2to1";
-            this.button8.UseVisualStyleBackColor = false;
+            this.bfila2.BackColor = System.Drawing.Color.DarkGreen;
+            this.bfila2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bfila2.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bfila2.ForeColor = System.Drawing.Color.White;
+            this.bfila2.Location = new System.Drawing.Point(809, 72);
+            this.bfila2.Name = "bfila2";
+            this.bfila2.Size = new System.Drawing.Size(85, 56);
+            this.bfila2.TabIndex = 49;
+            this.bfila2.Text = "2to1";
+            this.bfila2.UseVisualStyleBackColor = false;
+            this.bfila2.Click += new System.EventHandler(this.bfila2_Click);
             // 
-            // button11
+            // bred
             // 
-            this.button11.BackColor = System.Drawing.Color.Red;
-            this.button11.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button11.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button11.ForeColor = System.Drawing.Color.White;
-            this.button11.Location = new System.Drawing.Point(353, 237);
-            this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(114, 56);
-            this.button11.TabIndex = 50;
-            this.button11.Text = "RED";
-            this.button11.UseVisualStyleBackColor = false;
+            this.bred.BackColor = System.Drawing.Color.Red;
+            this.bred.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bred.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bred.ForeColor = System.Drawing.Color.White;
+            this.bred.Location = new System.Drawing.Point(353, 237);
+            this.bred.Name = "bred";
+            this.bred.Size = new System.Drawing.Size(114, 56);
+            this.bred.TabIndex = 50;
+            this.bred.Text = "RED";
+            this.bred.UseVisualStyleBackColor = false;
+            this.bred.Click += new System.EventHandler(this.bred_Click);
             // 
-            // button12
+            // bblack
             // 
-            this.button12.BackColor = System.Drawing.Color.Black;
-            this.button12.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button12.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button12.ForeColor = System.Drawing.Color.White;
-            this.button12.Location = new System.Drawing.Point(467, 237);
-            this.button12.Name = "button12";
-            this.button12.Size = new System.Drawing.Size(114, 56);
-            this.button12.TabIndex = 51;
-            this.button12.Text = "BLACK";
-            this.button12.UseVisualStyleBackColor = false;
+            this.bblack.BackColor = System.Drawing.Color.Black;
+            this.bblack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bblack.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bblack.ForeColor = System.Drawing.Color.White;
+            this.bblack.Location = new System.Drawing.Point(467, 237);
+            this.bblack.Name = "bblack";
+            this.bblack.Size = new System.Drawing.Size(114, 56);
+            this.bblack.TabIndex = 51;
+            this.bblack.Text = "BLACK";
+            this.bblack.UseVisualStyleBackColor = false;
+            this.bblack.Click += new System.EventHandler(this.bblack_Click);
             // 
-            // button13
+            // beven
             // 
-            this.button13.BackColor = System.Drawing.Color.Transparent;
-            this.button13.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button13.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button13.ForeColor = System.Drawing.Color.White;
-            this.button13.Location = new System.Drawing.Point(239, 237);
-            this.button13.Name = "button13";
-            this.button13.Size = new System.Drawing.Size(114, 56);
-            this.button13.TabIndex = 52;
-            this.button13.Text = "EVEN";
-            this.button13.UseVisualStyleBackColor = false;
+            this.beven.BackColor = System.Drawing.Color.DarkGreen;
+            this.beven.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.beven.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.beven.ForeColor = System.Drawing.Color.White;
+            this.beven.Location = new System.Drawing.Point(239, 237);
+            this.beven.Name = "beven";
+            this.beven.Size = new System.Drawing.Size(114, 56);
+            this.beven.TabIndex = 52;
+            this.beven.Text = "EVEN";
+            this.beven.UseVisualStyleBackColor = false;
+            this.beven.Click += new System.EventHandler(this.beven_Click);
             // 
-            // button14
+            // bodd
             // 
-            this.button14.BackColor = System.Drawing.Color.Transparent;
-            this.button14.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button14.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button14.ForeColor = System.Drawing.Color.White;
-            this.button14.Location = new System.Drawing.Point(581, 237);
-            this.button14.Name = "button14";
-            this.button14.Size = new System.Drawing.Size(114, 56);
-            this.button14.TabIndex = 53;
-            this.button14.Text = "ODD";
-            this.button14.UseVisualStyleBackColor = false;
+            this.bodd.BackColor = System.Drawing.Color.DarkGreen;
+            this.bodd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bodd.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bodd.ForeColor = System.Drawing.Color.White;
+            this.bodd.Location = new System.Drawing.Point(581, 237);
+            this.bodd.Name = "bodd";
+            this.bodd.Size = new System.Drawing.Size(114, 56);
+            this.bodd.TabIndex = 53;
+            this.bodd.Text = "ODD";
+            this.bodd.UseVisualStyleBackColor = false;
+            this.bodd.Click += new System.EventHandler(this.bodd_Click);
             // 
             // panel1
             // 
             this.panel1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.panel1.BackColor = System.Drawing.Color.DarkGreen;
-            this.panel1.Controls.Add(this.button14);
-            this.panel1.Controls.Add(this.button13);
-            this.panel1.Controls.Add(this.button12);
-            this.panel1.Controls.Add(this.button11);
-            this.panel1.Controls.Add(this.button8);
-            this.panel1.Controls.Add(this.button9);
-            this.panel1.Controls.Add(this.button10);
-            this.panel1.Controls.Add(this.button7);
-            this.panel1.Controls.Add(this.button6);
-            this.panel1.Controls.Add(this.button5);
-            this.panel1.Controls.Add(this.button4);
-            this.panel1.Controls.Add(this.button3);
+            this.panel1.Controls.Add(this.bodd);
+            this.panel1.Controls.Add(this.beven);
+            this.panel1.Controls.Add(this.bblack);
+            this.panel1.Controls.Add(this.bred);
+            this.panel1.Controls.Add(this.bfila2);
+            this.panel1.Controls.Add(this.bfila1);
+            this.panel1.Controls.Add(this.bfila3);
+            this.panel1.Controls.Add(this.b19to36);
+            this.panel1.Controls.Add(this.b1to18);
+            this.panel1.Controls.Add(this.b3rd12);
+            this.panel1.Controls.Add(this.b2nd12);
+            this.panel1.Controls.Add(this.b1st12);
             this.panel1.Controls.Add(this.b0);
             this.panel1.Controls.Add(this.b35);
             this.panel1.Controls.Add(this.b34);
@@ -1105,18 +1151,18 @@ namespace Roulette
         private System.Windows.Forms.Button b34;
         private System.Windows.Forms.Button b35;
         private System.Windows.Forms.Button b0;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.Button button10;
-        private System.Windows.Forms.Button button9;
-        private System.Windows.Forms.Button button8;
-        private System.Windows.Forms.Button button11;
-        private System.Windows.Forms.Button button12;
-        private System.Windows.Forms.Button button13;
-        private System.Windows.Forms.Button button14;
+        private System.Windows.Forms.Button b1st12;
+        private System.Windows.Forms.Button b2nd12;
+        private System.Windows.Forms.Button b3rd12;
+        private System.Windows.Forms.Button b1to18;
+        private System.Windows.Forms.Button b19to36;
+        private System.Windows.Forms.Button bfila3;
+        private System.Windows.Forms.Button bfila1;
+        private System.Windows.Forms.Button bfila2;
+        private System.Windows.Forms.Button bred;
+        private System.Windows.Forms.Button bblack;
+        private System.Windows.Forms.Button beven;
+        private System.Windows.Forms.Button bodd;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.ImageList fish;
     }

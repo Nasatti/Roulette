@@ -1,10 +1,8 @@
 {
   "ExpandedNodes": [
     "",
-    "\\Roulette_Client",
-    "\\Roulette_server",
-    "\\Roulette_server\\Roulette_server"
+    "\\Roulette_Client"
   ],
-  "SelectedNode": "\\Roulette_server\\Roulette_server\\Form1.cs",
+  "SelectedNode": "\\Roulette_Client\\Roulette.sln",
   "PreviewInSolutionExplorer": false
 }
