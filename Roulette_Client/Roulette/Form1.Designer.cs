@@ -900,6 +900,7 @@ namespace Roulette
             this.bfila3.TabIndex = 47;
             this.bfila3.Text = "2to1";
             this.bfila3.UseVisualStyleBackColor = false;
+            this.bfila3.Click += new System.EventHandler(this.bfila3_Click);
             // 
             // bfila1
             // 

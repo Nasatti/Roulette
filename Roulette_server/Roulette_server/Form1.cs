@@ -19,6 +19,7 @@ namespace Roulette_server
         Random r = new Random();
         float angle;
         int i = 0;
+        Roulette roulette = new Roulette();
         public Server()
         {
             InitializeComponent();
@@ -27,6 +28,10 @@ namespace Roulette_server
 
         private void timer_palla_Tick(object sender, EventArgs e)
         {
+            angle = angle % 359.973f;
+            angle += 9.729f;
+            Invalidate();
+
             i++;
             Random r = new Random();
             if (i >= r.Next(30,50))
@@ -43,11 +48,27 @@ namespace Roulette_server
                 {
                     timer_palla.Enabled = false;
                     timer_avvio.Enabled = true;
+                    int n = (int)angleToNumber(angle);
+                    if (roulette.number[n].color == "green")
+                    {
+                        p_number.Image = color.Images[2];
+                        num.BackColor = Color.LimeGreen;
+                    }
+                    else if (roulette.number[n].color == "red")
+                    {
+                        p_number.Image = color.Images[0];
+                        num.BackColor = Color.Red;
+                    }
+                    else if (roulette.number[n].color == "black")
+                    {
+                        p_number.Image = color.Images[1];
+                        num.BackColor = Color.Black;
+                    }
+                    num.Text = roulette.number[n].n.ToString();
+                    p_number.Visible = true;
+                    num.Visible = true;
                 }
             }
-            angle += 9.729f;
-            Invalidate();
-
         }
 
 
@@ -55,7 +76,7 @@ namespace Roulette_server
         {
             img = Image.FromFile(@"../../img/palla.png");
             int n = r.Next(0, 36);
-            angle = n * 10;
+            angle = n * 9.729f;
         }
 
 
@@ -85,6 +106,15 @@ namespace Roulette_server
             timer_palla.Interval = 50;
             timer_palla.Enabled = true;
             timer_avvio.Enabled = false;
+            p_number.Visible = false;
+            num.Visible = false;
+        }
+        private double angleToNumber(float angle)
+        {
+            double a = angle;
+            double n;
+            n = a / 9.729;
+            return Math.Truncate(n);
         }
     }
 }
