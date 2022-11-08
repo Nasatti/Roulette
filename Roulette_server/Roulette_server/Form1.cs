@@ -20,10 +20,12 @@ namespace Roulette_server
         float angle;
         int i = 0;
         Roulette roulette = new Roulette();
+        Bitmap bmp;
         public Server()
         {
             InitializeComponent();
             this.DoubleBuffered = true;
+
         }
 
         private void timer_palla_Tick(object sender, EventArgs e)
@@ -77,13 +79,14 @@ namespace Roulette_server
             img = Image.FromFile(@"../../img/palla.png");
             int n = r.Next(0, 36);
             angle = n * 9.729f;
+            bmp = new Bitmap(img.Width, img.Height);
         }
 
 
         private void Server_Paint(object sender, PaintEventArgs e)
-        {
-            Bitmap bmp = new Bitmap(img.Width, img.Height);
+        { 
             Graphics g = Graphics.FromImage(bmp);
+            g.Clear(Color.Transparent);
             g.TranslateTransform(bmp.Width/2, bmp.Height/2);
             g.RotateTransform(angle);
             g.TranslateTransform(-bmp.Width / 2, -bmp.Height / 2);
