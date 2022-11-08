@@ -32,6 +32,7 @@ namespace Roulette_server
         {
             angle = angle % 359.973f;
             angle += 9.729f;
+            
             Invalidate();
 
             i++;
@@ -51,6 +52,8 @@ namespace Roulette_server
                     timer_palla.Enabled = false;
                     timer_avvio.Enabled = true;
                     int n = (int)angleToNumber(angle);
+                    if (n == 37)
+                        n = 0;
                     if (roulette.number[n].color == "green")
                     {
                         p_number.Image = color.Images[2];
