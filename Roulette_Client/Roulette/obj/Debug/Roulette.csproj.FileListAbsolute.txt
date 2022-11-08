@@ -20,3 +20,4 @@ C:\Users\nasatti.18159\Source\Repos\Nasatti\Roulette\Roulette_Client\Roulette\ob
 C:\Users\nasatti.18159\Source\Repos\Nasatti\Roulette\Roulette_Client\Roulette\obj\Debug\Roulette.csproj.CoreCompileInputs.cache
 C:\Users\nasatti.18159\Source\Repos\Nasatti\Roulette\Roulette_Client\Roulette\obj\Debug\Roulette.exe
 C:\Users\nasatti.18159\Source\Repos\Nasatti\Roulette\Roulette_Client\Roulette\obj\Debug\Roulette.pdb
+C:\Users\ricca\Source\Repos\Nasatti\Roulette\Roulette_Client\Roulette\obj\Debug\Roulette.Ricarica.resources

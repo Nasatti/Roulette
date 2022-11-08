@@ -33,7 +33,7 @@ namespace Roulette
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Client));
             this.fish1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.label_ricarica = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.fish5 = new System.Windows.Forms.PictureBox();
@@ -138,17 +138,17 @@ namespace Roulette
             this.label1.TabIndex = 7;
             this.label1.Text = "Importo residuo:";
             // 
-            // label2
+            // label_ricarica
             // 
-            this.label2.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.label2.AutoSize = true;
-            this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(34, 31);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(38, 16);
-            this.label2.TabIndex = 8;
-            this.label2.Text = "0.00€";
+            this.label_ricarica.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label_ricarica.AutoSize = true;
+            this.label_ricarica.ForeColor = System.Drawing.Color.White;
+            this.label_ricarica.Location = new System.Drawing.Point(34, 31);
+            this.label_ricarica.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label_ricarica.Name = "label_ricarica";
+            this.label_ricarica.Size = new System.Drawing.Size(52, 16);
+            this.label_ricarica.TabIndex = 8;
+            this.label_ricarica.Text = "100,00€";
             // 
             // button1
             // 
@@ -164,6 +164,7 @@ namespace Roulette
             this.button1.TabIndex = 9;
             this.button1.Text = "RICARICA";
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // button2
             // 
@@ -1071,7 +1072,7 @@ namespace Roulette
             this.Controls.Add(this.panel_fish1);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label_ricarica);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.panel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -1101,7 +1102,7 @@ namespace Roulette
         #endregion
         private System.Windows.Forms.PictureBox fish1;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label_ricarica;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.PictureBox fish5;

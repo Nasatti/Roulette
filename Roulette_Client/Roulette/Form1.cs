@@ -13,86 +13,197 @@ namespace Roulette
     public partial class Client : Form
     {
         int nfish = 0;
+        int f;
         public Client()
         {
             InitializeComponent();
         }
-        public void pictureBox1_Click(object sender, EventArgs e)
+        private void pictureBox1_Click(object sender, EventArgs e)
         {
-            nfish = 0;
-            panel_fish1.BackColor = Color.LimeGreen;
-            panel_fish5.BackColor = Color.Transparent;
-            panel_fish10.BackColor = Color.Transparent;
-            panel_fish25.BackColor = Color.Transparent;
-            panel_fish50.BackColor = Color.Transparent;
-            panel_fish100.BackColor = Color.Transparent;
+            if (controllo(1))
+            {
+                f = 1;
+                nfish = 0;
+                panel_fish1.BackColor = Color.LimeGreen;
+                panel_fish5.BackColor = Color.Transparent;
+                panel_fish10.BackColor = Color.Transparent;
+                panel_fish25.BackColor = Color.Transparent;
+                panel_fish50.BackColor = Color.Transparent;
+                panel_fish100.BackColor = Color.Transparent;
+            }
+            else
+                MessageBox.Show("Conto insufficiente");
         }
         private void fish5_Click(object sender, EventArgs e)
         {
-            nfish = 1;
-            panel_fish5.BackColor = Color.LimeGreen;
-            panel_fish1.BackColor = Color.Transparent;
-            panel_fish10.BackColor = Color.Transparent;
-            panel_fish25.BackColor = Color.Transparent;
-            panel_fish50.BackColor = Color.Transparent;
-            panel_fish100.BackColor = Color.Transparent;
+            if (controllo(5))
+            {
+                f = 5;
+                nfish = 1;
+                panel_fish5.BackColor = Color.LimeGreen;
+                panel_fish1.BackColor = Color.Transparent;
+                panel_fish10.BackColor = Color.Transparent;
+                panel_fish25.BackColor = Color.Transparent;
+                panel_fish50.BackColor = Color.Transparent;
+                panel_fish100.BackColor = Color.Transparent;
+            }
+            else
+                MessageBox.Show("Conto insufficiente");
         }
         private void fish10_Click(object sender, EventArgs e)
         {
-            nfish = 2;
-            panel_fish10.BackColor = Color.LimeGreen;
-            panel_fish1.BackColor = Color.Transparent;
-            panel_fish5.BackColor = Color.Transparent;
-            panel_fish25.BackColor = Color.Transparent;
-            panel_fish50.BackColor = Color.Transparent;
-            panel_fish100.BackColor = Color.Transparent;
+            if (controllo(10))
+            {
+                f = 10;
+                nfish = 2;
+                panel_fish10.BackColor = Color.LimeGreen;
+                panel_fish1.BackColor = Color.Transparent;
+                panel_fish5.BackColor = Color.Transparent;
+                panel_fish25.BackColor = Color.Transparent;
+                panel_fish50.BackColor = Color.Transparent;
+                panel_fish100.BackColor = Color.Transparent;
+            }
+            else
+                MessageBox.Show("Conto insufficiente");
         }
         private void fish25_Click(object sender, EventArgs e)
         {
-            nfish = 3;
-            panel_fish25.BackColor = Color.LimeGreen;
-            panel_fish1.BackColor = Color.Transparent;
-            panel_fish5.BackColor = Color.Transparent;
-            panel_fish10.BackColor = Color.Transparent;
-            panel_fish50.BackColor = Color.Transparent;
-            panel_fish100.BackColor = Color.Transparent;
+            if (controllo(25))
+            {
+                f = 25;
+                nfish = 3;
+                panel_fish25.BackColor = Color.LimeGreen;
+                panel_fish1.BackColor = Color.Transparent;
+                panel_fish5.BackColor = Color.Transparent;
+                panel_fish10.BackColor = Color.Transparent;
+                panel_fish50.BackColor = Color.Transparent;
+                panel_fish100.BackColor = Color.Transparent;
+            }
+            else
+                MessageBox.Show("Conto insufficiente");
         }
         private void fish50_Click(object sender, EventArgs e)
         {
-            nfish = 4;
-            panel_fish50.BackColor = Color.LimeGreen;
-            panel_fish1.BackColor = Color.Transparent;
-            panel_fish5.BackColor = Color.Transparent;
-            panel_fish10.BackColor = Color.Transparent;
-            panel_fish25.BackColor = Color.Transparent;
-            panel_fish100.BackColor = Color.Transparent;
+            if (controllo(50))
+            {
+                f = 50;
+                nfish = 4;
+                panel_fish50.BackColor = Color.LimeGreen;
+                panel_fish1.BackColor = Color.Transparent;
+                panel_fish5.BackColor = Color.Transparent;
+                panel_fish10.BackColor = Color.Transparent;
+                panel_fish25.BackColor = Color.Transparent;
+                panel_fish100.BackColor = Color.Transparent;
+            }
+            else
+                MessageBox.Show("Conto insufficiente");
         }
         private void fish100_Click(object sender, EventArgs e)
         {
-            nfish = 5;
-            panel_fish100.BackColor = Color.LimeGreen;
-            panel_fish1.BackColor = Color.Transparent;
-            panel_fish5.BackColor = Color.Transparent;
-            panel_fish10.BackColor = Color.Transparent;
-            panel_fish25.BackColor = Color.Transparent;
-            panel_fish50.BackColor = Color.Transparent;
+            if (controllo(100))
+            {
+                f = 100;
+                nfish = 5;
+                panel_fish100.BackColor = Color.LimeGreen;
+                panel_fish1.BackColor = Color.Transparent;
+                panel_fish5.BackColor = Color.Transparent;
+                panel_fish10.BackColor = Color.Transparent;
+                panel_fish25.BackColor = Color.Transparent;
+                panel_fish50.BackColor = Color.Transparent;
+            }
+            else
+                MessageBox.Show("Conto insufficiente");
+        }
+        private bool controllo(int num)
+        {
+            try
+            {
+                string[] s = label_ricarica.Text.Split(',');
+                int n = int.Parse(s[0]);
+                if (n >= num)
+                    return true;
+                else
+                    return false;
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
         }
         private void Button_Fish(Button b, string s)
         {
+            string[] str;
+            int n;
             if (b.Image == null)
             {
-                b.Image = fish.Images[nfish];
-                b.Text = "";
+                str = label_ricarica.Text.Split(',');
+                n = int.Parse(str[0]);
+                if (n >= f)
+                {
+                    b.Image = fish.Images[nfish];
+                    b.Text = "";
+                    n -= f;
+                    label_ricarica.Text = n.ToString() + ",00€";
+                }
+                else
+                    MessageBox.Show("Conto insufficiente");
             }
             else
             {
+                if (b.BackgroundImage == fish.Images[0])
+                {
+                    MessageBox.Show("a");
+                    str = label_ricarica.Text.Split(',');
+                    n = int.Parse(str[0]);
+                    n++;
+                    label_ricarica.Text = n + ",00€";
+                }
+                else if (b.BackgroundImage == fish.Images[1])
+                {
+                    str = label_ricarica.Text.Split(',');
+                    n = int.Parse(str[0]);
+                    n += 5;
+                    label_ricarica.Text = n + ",00€";
+                }
+                else if (b.BackgroundImage == fish.Images[2])
+                {
+                    str = label_ricarica.Text.Split(',');
+                    n = int.Parse(str[0]);
+                    n += 10;
+                    label_ricarica.Text = n + ",00€";
+                }
+                else if (b.BackgroundImage == fish.Images[3])
+                {
+                    str = label_ricarica.Text.Split(',');
+                    n = int.Parse(str[0]);
+                    n += 25;
+                    label_ricarica.Text = n + ",00€";
+                }
+                else if (b.BackgroundImage == fish.Images[4])
+                {
+                    str = label_ricarica.Text.Split(',');
+                    n = int.Parse(str[0]);
+                    n += 50;
+                    label_ricarica.Text = n + ",00€";
+                }
+                else if (b.BackgroundImage == fish.Images[5])
+                {
+                    str = label_ricarica.Text.Split(',');
+                    n = int.Parse(str[0]);
+                    n += 100;
+                    label_ricarica.Text = n + ",00€";
+                }
                 b.Image = null;
                 b.Text = s;
+
+
             }
+
         }
         private void Client_Load(object sender, EventArgs e)
         {
-            pictureBox1_Click(sender, e);
+            nfish = 0;
+            f = 1;
         }
         private void b0_Click(object sender, EventArgs e)
         {
@@ -289,6 +400,16 @@ namespace Roulette
         private void bfila3_Click(object sender, EventArgs e)
         {
             Button_Fish(bfila3, "2to1");
+        }
+        public void ricarica(string s)
+        {
+            label_ricarica.Text = s + ",00€";
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Ricarica r = new Ricarica(this);
+            r.Show();
         }
     }
 }
