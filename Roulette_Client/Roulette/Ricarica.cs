@@ -24,17 +24,6 @@ namespace Roulette
             text_ricarica.Text = trackBar.Value.ToString();
         }
 
-        private void text_ricarica_TextChanged(object sender, EventArgs e)
-        {
-            if (int.Parse(text_ricarica.Text) <= 100)
-                trackBar.Value = int.Parse(text_ricarica.Text);
-            else
-            {
-                MessageBox.Show("Importo massimo permesso è di 100");
-                text_ricarica.Text = "1";
-            }
-
-        }
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -42,6 +31,15 @@ namespace Roulette
             this.Close();
         }
 
-
+        private void text_ricarica_ValueChanged(object sender, EventArgs e)
+        {
+            if (float.Parse(text_ricarica.Text) <= 500)
+                trackBar.Value = int.Parse(text_ricarica.Text);
+            else
+            {
+                MessageBox.Show("Importo massimo permesso è di 500");
+                text_ricarica.Text = "1";
+            }
+        }
     }
 }

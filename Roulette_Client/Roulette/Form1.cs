@@ -14,6 +14,7 @@ namespace Roulette
     {
         int nfish = 0;
         int f;
+        Button[] button;
         public Client()
         {
             InitializeComponent();
@@ -130,74 +131,35 @@ namespace Roulette
                 return false;
             }
         }
-        private void Button_Fish(Button b, string s)
+        private void Button_Fish(Button b, string s, EventArgs e)
         {
-            string[] str;
-            int n;
-            if (b.Image == null)
+            MouseEventArgs me = (MouseEventArgs)e;
+            switch (me.Button)
             {
-                str = label_ricarica.Text.Split(',');
-                n = int.Parse(str[0]);
-                if (n >= f)
-                {
-                    b.Image = fish.Images[nfish];
-                    b.Text = "";
-                    n -= f;
-                    label_ricarica.Text = n.ToString() + ",00€";
-                }
-                else
-                    MessageBox.Show("Conto insufficiente");
+                case MouseButtons.Left:
+                    string[] str;
+                    int n;
+                    if (b.Image == null)
+                    {
+                        str = label_ricarica.Text.Split(',');
+                        n = int.Parse(str[0]);
+                        if (n >= f)
+                        {
+                            b.Image = fish.Images[nfish];
+                            b.Text = "";
+                            n -= f;
+                            label_ricarica.Text = n.ToString() + ",00€";
+                        }
+                        else
+                            MessageBox.Show("Conto insufficiente");
+                    }
+                    break;
+                case MouseButtons.Right:
+                    b.Image = null;
+                    b.Text = s;
+                    break;
             }
-            else
-            {
-                if (b.BackgroundImage == fish.Images[0])
-                {
-                    MessageBox.Show("a");
-                    str = label_ricarica.Text.Split(',');
-                    n = int.Parse(str[0]);
-                    n++;
-                    label_ricarica.Text = n + ",00€";
-                }
-                else if (b.BackgroundImage == fish.Images[1])
-                {
-                    str = label_ricarica.Text.Split(',');
-                    n = int.Parse(str[0]);
-                    n += 5;
-                    label_ricarica.Text = n + ",00€";
-                }
-                else if (b.BackgroundImage == fish.Images[2])
-                {
-                    str = label_ricarica.Text.Split(',');
-                    n = int.Parse(str[0]);
-                    n += 10;
-                    label_ricarica.Text = n + ",00€";
-                }
-                else if (b.BackgroundImage == fish.Images[3])
-                {
-                    str = label_ricarica.Text.Split(',');
-                    n = int.Parse(str[0]);
-                    n += 25;
-                    label_ricarica.Text = n + ",00€";
-                }
-                else if (b.BackgroundImage == fish.Images[4])
-                {
-                    str = label_ricarica.Text.Split(',');
-                    n = int.Parse(str[0]);
-                    n += 50;
-                    label_ricarica.Text = n + ",00€";
-                }
-                else if (b.BackgroundImage == fish.Images[5])
-                {
-                    str = label_ricarica.Text.Split(',');
-                    n = int.Parse(str[0]);
-                    n += 100;
-                    label_ricarica.Text = n + ",00€";
-                }
-                b.Image = null;
-                b.Text = s;
-
-
-            }
+            
 
         }
         private void Client_Load(object sender, EventArgs e)
@@ -205,211 +167,175 @@ namespace Roulette
             nfish = 0;
             f = 1;
         }
-        private void b0_Click(object sender, EventArgs e)
-        {
-            Button_Fish(b0, "0");
-        }
-        private void b1_Click(object sender, EventArgs e)
-        {
-            Button_Fish(b1, "1");
-        }
-        private void b2_Click(object sender, EventArgs e)
-        {
-            Button_Fish(b2, "2");
-        }
-        private void b3_Click(object sender, EventArgs e)
-        {
-            Button_Fish(b3, "3");
-        }
-        private void b4_Click(object sender, EventArgs e)
-        {
-            Button_Fish(b4, "4");
-        }
-        private void b5_Click(object sender, EventArgs e)
-        {
-            Button_Fish(b5, "5");
-        }
-        private void b6_Click(object sender, EventArgs e)
-        {
-            Button_Fish(b6, "6");
-        }
-        private void b7_Click(object sender, EventArgs e)
-        {
-            Button_Fish(b7, "7");
-        }
-        private void b8_Click(object sender, EventArgs e)
-        {
-            Button_Fish(b8, "8");
-        }
-        private void b9_Click(object sender, EventArgs e)
-        {
-            Button_Fish(b9, "9");
-        }
-        private void b10_Click(object sender, EventArgs e)
-        {
-            Button_Fish(b10, "10");
-        }
-        private void b11_Click(object sender, EventArgs e)
-        {
-            Button_Fish(b11, "11");
-        }
-        private void b12_Click(object sender, EventArgs e)
-        {
-            Button_Fish(b12, "12");
-        }
-        private void b13_Click(object sender, EventArgs e)
-        {
-            Button_Fish(b13, "13");
-        }
-        private void b14_Click(object sender, EventArgs e)
-        {
-            Button_Fish(b14, "14");
-        }
-        private void b15_Click(object sender, EventArgs e)
-        {
-            Button_Fish(b15, "15");
-        }
-        private void b16_Click(object sender, EventArgs e)
-        {
-            Button_Fish(b16, "16");
-        }
-        private void b17_Click(object sender, EventArgs e)
-        {
-            Button_Fish(b17, "17");
-        }
-        private void b18_Click(object sender, EventArgs e)
-        {
-            Button_Fish(b18, "18");
-        }
-        private void b19_Click(object sender, EventArgs e)
-        {
-            Button_Fish(b19, "19");
-        }
-        private void b20_Click(object sender, EventArgs e)
-        {
-            Button_Fish(b20, "20");
-        }
-        private void b21_Click(object sender, EventArgs e)
-        {
-            Button_Fish(b21, "21");
-        }
-        private void b22_Click(object sender, EventArgs e)
-        {
-            Button_Fish(b22, "22");
-        }
-        private void b23_Click(object sender, EventArgs e)
-        {
-            Button_Fish(b23, "23");
-        }
-        private void b24_Click(object sender, EventArgs e)
-        {
-            Button_Fish(b24, "24");
-        }
-        private void b25_Click(object sender, EventArgs e)
-        {
-            Button_Fish(b25, "25");
-        }
-        private void b26_Click(object sender, EventArgs e)
-        {
-            Button_Fish(b26, "26");
-        }
-        private void b27_Click(object sender, EventArgs e)
-        {
-            Button_Fish(b27, "27");
-        }
-        private void b28_Click(object sender, EventArgs e)
-        {
-            Button_Fish(b28, "28");
-        }
-        private void b29_Click(object sender, EventArgs e)
-        {
-            Button_Fish(b29, "29");
-        }
-        private void b30_Click(object sender, EventArgs e)
-        {
-            Button_Fish(b30, "30");
-        }
-        private void b31_Click(object sender, EventArgs e)
-        {
-            Button_Fish(b31, "31");
-        }
-        private void b32_Click(object sender, EventArgs e)
-        {
-            Button_Fish(b32, "32");
-        }
-        private void b33_Click(object sender, EventArgs e)
-        {
-            Button_Fish(b33, "33");
-        }
-        private void b34_Click(object sender, EventArgs e)
-        {
-            Button_Fish(b34, "34");
-        }
-        private void b35_Click(object sender, EventArgs e)
-        {
-            Button_Fish(b35, "35");
-        }
-        private void b36_Click(object sender, EventArgs e)
-        {
-            Button_Fish(b36, "36");
-        }
-        private void b1st12_Click(object sender, EventArgs e)
-        {
-            Button_Fish(b1st12, "1st12");
-        }
-        private void b2nd12_Click(object sender, EventArgs e)
-        {
-            Button_Fish(b2nd12, "2nd12");
-        }
-        private void b3rd12_Click(object sender, EventArgs e)
-        {
-            Button_Fish(b3rd12, "3rt12");
-        }
-        private void b1to18_Click(object sender, EventArgs e)
-        {
-            Button_Fish(b1to18, "1to18");
-        }
-        private void beven_Click(object sender, EventArgs e)
-        {
-            Button_Fish(beven, "EVEN");
-        }
-        private void bred_Click(object sender, EventArgs e)
-        {
-            Button_Fish(bred, "RED");
-        }
-        private void bblack_Click(object sender, EventArgs e)
-        {
-            Button_Fish(bblack, "BLACK");
-        }
-        private void bodd_Click(object sender, EventArgs e)
-        {
-            Button_Fish(bodd, "ODD");
-        }
-        private void b19to36_Click(object sender, EventArgs e)
-        {
-            Button_Fish(b19to36, "19to36");
-        }
-        private void bfila1_Click(object sender, EventArgs e)
-        {
-            Button_Fish(bfila1, "2to1");
-        }
-        private void bfila2_Click(object sender, EventArgs e)
-        {
-            Button_Fish(bfila2, "2to1");
-        }
-        private void bfila3_Click(object sender, EventArgs e)
-        {
-            Button_Fish(bfila3, "2to1");
-        }
         public void ricarica(string s)
         {
-            label_ricarica.Text = s + ",00€";
+            string[] ss = label_ricarica.Text.Split(',');
+            int n1 = int.Parse(ss[0]);
+            int n2 = int.Parse(s);
+            int r = n1 + n2;
+            label_ricarica.Text = r.ToString() + ",00€";
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             Ricarica r = new Ricarica(this);
             r.Show();
+        }
+
+
+        private void b0_MouseDown(object sender, MouseEventArgs e)
+        {
+            Button_Fish(b0, "0", e);
+        }
+
+        private void b1_MouseDown(object sender, MouseEventArgs e)
+        {
+            Button_Fish(b1, "1", e);
+        }
+
+        private void b2_MouseDown(object sender, MouseEventArgs e)
+        {
+            Button_Fish(b2, "2", e);
+        }
+
+        private void b3_MouseDown(object sender, MouseEventArgs e)
+        {
+            Button_Fish(b3, "3", e);
+        }
+
+        private void b4_MouseDown(object sender, MouseEventArgs e)
+        {
+            Button_Fish(b4, "4", e);
+        }
+
+        private void b5_MouseDown(object sender, MouseEventArgs e)
+        {
+            Button_Fish(b5, "5", e);
+        }
+
+        private void b6_MouseDown(object sender, MouseEventArgs e)
+        {
+            Button_Fish(b6, "6", e);
+        }
+
+        private void b7_MouseDown(object sender, MouseEventArgs e)
+        {
+            Button_Fish(b7, "7", e);
+        }
+
+        private void b8_MouseDown(object sender, MouseEventArgs e)
+        {
+            Button_Fish(b8, "8", e);
+        }
+
+        private void b9_MouseDown(object sender, MouseEventArgs e)
+        {
+            Button_Fish(b9, "9", e);
+        }
+
+        private void b10_MouseDown(object sender, MouseEventArgs e)
+        {
+            Button_Fish(b10, "10", e);
+        }
+
+        private void b11_MouseDown(object sender, MouseEventArgs e)
+        {
+            Button_Fish(b11, "11", e);
+        }
+
+        private void b12_MouseDown(object sender, MouseEventArgs e)
+        {
+            Button_Fish(b12, "12", e);
+        }
+
+        private void b13_MouseDown(object sender, MouseEventArgs e)
+        {
+            Button_Fish(b13, "13", e);
+        }
+
+        private void b14_Click(object sender, EventArgs e)
+        {
+            Button_Fish(b14, "14", e);
+        }
+
+        private void b15_MouseDown(object sender, MouseEventArgs e)
+        {
+            Button_Fish(b15, "15", e);
+        }
+
+        private void b16_MouseDown(object sender, MouseEventArgs e)
+        {
+            Button_Fish(b16, "16", e);
+        }
+
+        private void b17_MouseDown(object sender, MouseEventArgs e)
+        {
+            Button_Fish(b17, "17", e);
+        }
+
+        private void b18_MouseDown(object sender, MouseEventArgs e)
+        {
+            Button_Fish(b18, "18", e);
+        }
+
+        private void b19_MouseDown(object sender, MouseEventArgs e)
+        {
+            Button_Fish(b19, "19", e);
+        }
+
+        private void b20_MouseDown(object sender, MouseEventArgs e)
+        {
+            Button_Fish(b20, "20", e);
+        }
+
+        private void b21_MouseDown(object sender, MouseEventArgs e)
+        {
+            Button_Fish(b21, "21", e);
+        }
+
+        private void b22_MouseDown(object sender, MouseEventArgs e)
+        {
+            Button_Fish(b22, "22", e);
+        }
+
+        private void b23_MouseDown(object sender, MouseEventArgs e)
+        {
+            Button_Fish(b23, "23", e);
+        }
+
+        private void b24_MouseDown(object sender, MouseEventArgs e)
+        {
+            Button_Fish(b24, "24", e);
+        }
+
+        private void b25_MouseDown(object sender, MouseEventArgs e)
+        {
+            Button_Fish(b25, "25", e);
+        }
+
+        private void b26_MouseDown(object sender, MouseEventArgs e)
+        {
+            Button_Fish(b26, "26", e);
+        }
+
+        private void b27_MouseDown(object sender, MouseEventArgs e)
+        {
+            Button_Fish(b27, "27", e);
+        }
+
+        private void b28_MouseDown(object sender, MouseEventArgs e)
+        {
+            Button_Fish(b28, "28", e);
+        }
+
+        private void b29_MouseDown(object sender, MouseEventArgs e)
+        {
+            Button_Fish(b29, "29", e);
+        }
+
+        private void b30_MouseDown(object sender, MouseEventArgs e)
+        {
+            Button_Fish(b30, "30", e);
         }
     }
 }
