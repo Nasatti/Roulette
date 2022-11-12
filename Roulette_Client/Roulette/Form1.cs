@@ -14,7 +14,7 @@ namespace Roulette
     {
         int nfish = 0;
         int f;
-        Button[] button;
+        Dictionary<string, int> puntata = new Dictionary<string, int>();
         public Client()
         {
             InitializeComponent();
@@ -149,18 +149,29 @@ namespace Roulette
                             b.Text = "";
                             n -= f;
                             label_ricarica.Text = n.ToString() + ",00€";
+                            puntata.Add(s, f);
                         }
                         else
                             MessageBox.Show("Conto insufficiente");
                     }
                     break;
                 case MouseButtons.Right:
-                    b.Image = null;
-                    b.Text = s;
+                    if (b.Image != null)
+                    {
+                        b.Image = null;
+                        b.Text = s;
+                        str = label_ricarica.Text.Split(',');
+                        n = int.Parse(str[0]);
+                        n += puntata[s];
+                        label_ricarica.Text = n.ToString() + ",00€";
+                        puntata.Remove(s);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Punta qualcosa");
+                    }
                     break;
             }
-            
-
         }
         private void Client_Load(object sender, EventArgs e)
         {
@@ -253,7 +264,7 @@ namespace Roulette
             Button_Fish(b13, "13", e);
         }
 
-        private void b14_Click(object sender, EventArgs e)
+        private void b14_MouseDown(object sender, MouseEventArgs e)
         {
             Button_Fish(b14, "14", e);
         }
@@ -337,5 +348,97 @@ namespace Roulette
         {
             Button_Fish(b30, "30", e);
         }
+
+        private void b31_MouseDown(object sender, MouseEventArgs e)
+        {
+            Button_Fish(b31, "31", e);
+        }
+
+        private void b32_MouseDown(object sender, MouseEventArgs e)
+        {
+            Button_Fish(b32, "32", e);
+        }
+
+        private void b33_MouseDown(object sender, MouseEventArgs e)
+        {
+            Button_Fish(b33, "33", e);
+        }
+
+        private void b34_MouseDown(object sender, MouseEventArgs e)
+        {
+            Button_Fish(b34, "34", e);
+        }
+
+        private void b35_MouseDown(object sender, MouseEventArgs e)
+        {
+            Button_Fish(b35, "35", e);
+        }
+
+        private void b36_MouseDown(object sender, MouseEventArgs e)
+        {
+            Button_Fish(b36, "36", e);
+        }
+
+        private void b1st12_MouseDown(object sender, MouseEventArgs e)
+        {
+            Button_Fish(b1st12, "1st12", e);
+        }
+
+        private void b2nd12_MouseDown(object sender, MouseEventArgs e)
+        {
+            Button_Fish(b2nd12, "2nd12", e);
+        }
+
+        private void b3rd12_MouseDown(object sender, MouseEventArgs e)
+        {
+            Button_Fish(b3rd12, "3rd12", e);
+        }
+
+        private void b1to18_MouseDown(object sender, MouseEventArgs e)
+        {
+            Button_Fish(b1to18, "1to18", e);
+        }
+
+        private void beven_MouseDown(object sender, MouseEventArgs e)
+        {
+            Button_Fish(beven, "even", e);
+        }
+
+        private void bred_MouseDown(object sender, MouseEventArgs e)
+        {
+            Button_Fish(bred, "red", e);
+        }
+
+        private void bblack_MouseDown(object sender, MouseEventArgs e)
+        {
+            Button_Fish(bblack, "black", e);
+        }
+
+        private void bodd_MouseDown(object sender, MouseEventArgs e)
+        {
+            Button_Fish(bodd, "odd", e);
+        }
+
+        private void b19to36_MouseDown(object sender, MouseEventArgs e)
+        {
+            Button_Fish(b19to36, "19to36", e);
+        }
+
+        private void bfila1_MouseDown(object sender, MouseEventArgs e)
+        {
+            Button_Fish(bfila1, "fila1", e);
+        }
+
+        private void bfila2_MouseDown(object sender, MouseEventArgs e)
+        {
+            Button_Fish(bfila2, "fila2", e);
+        }
+
+        private void bfila3_MouseDown(object sender, MouseEventArgs e)
+        {
+            Button_Fish(bfila3, "fila3", e);
+        }
+
+
     }
 }
