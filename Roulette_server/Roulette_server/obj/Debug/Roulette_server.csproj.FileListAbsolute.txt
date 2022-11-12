@@ -17,3 +17,5 @@ C:\Users\nasatti.18159\Source\Repos\Nasatti\Roulette\Roulette_server\Roulette_se
 C:\Users\nasatti.18159\Source\Repos\Nasatti\Roulette\Roulette_server\Roulette_server\obj\Debug\Roulette_server.exe
 C:\Users\nasatti.18159\Source\Repos\Nasatti\Roulette\Roulette_server\Roulette_server\obj\Debug\Roulette_server.pdb
 C:\Users\nasatti.18159\Source\Repos\Nasatti\Roulette\Roulette_server\Roulette_server\obj\Debug\Roulette_server.csprojAssemblyReference.cache
+C:\Users\ricca\Source\Repos\Nasatti\Roulette\Roulette_server\Roulette_server\bin\Debug\Roulette_server.exe.config
+C:\Users\ricca\Source\Repos\Nasatti\Roulette\Roulette_server\Roulette_server\obj\Debug\Roulette_server.csproj.SuggestedBindingRedirects.cache

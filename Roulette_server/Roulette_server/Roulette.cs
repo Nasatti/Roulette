@@ -7,7 +7,7 @@ namespace Roulette_server
     public class Roulette
     {
         public List<Number> number { get; set; }
-
+        public int[] quote;
         public Roulette()
         {
             number = new List<Number>();
