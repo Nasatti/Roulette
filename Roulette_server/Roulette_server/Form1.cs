@@ -8,24 +8,30 @@ using System.Text;
 using System.Windows.Forms;
 using System.IO;
 using System.Drawing.Drawing2D;
+using System.Threading;
+using System.Net;
+using System.Net.Sockets;
 
 namespace Roulette_server
 {
 
-
+    //odd dispari   even pari
+    //18 7
     public partial class Server : Form
     {
-        Image img;
+        Image img; 
         Random r = new Random();
         float angle;
         int i = 0;
         Roulette roulette = new Roulette();
         Bitmap bmp;
+        string[] risultato = new string[5];
+
+        public static string data = null;
         public Server()
         {
             InitializeComponent();
             this.DoubleBuffered = true;
-
         }
 
         private void timer_palla_Tick(object sender, EventArgs e)
@@ -59,8 +65,7 @@ namespace Roulette_server
                         p_number.Image = color.Images[2];
                         num.BackColor = Color.LimeGreen;
                     }
-                    else if (roulette.number[n].color == "red")
-                    {
+                    else if (roulette.number[n].color == "red") { 
                         p_number.Image = color.Images[0];
                         num.BackColor = Color.Red;
                     }
@@ -72,6 +77,8 @@ namespace Roulette_server
                     num.Text = roulette.number[n].n.ToString();
                     p_number.Visible = true;
                     num.Visible = true;
+                    risultato = estrazione(roulette.number[n].n, n);
+                    
                 }
             }
         }
@@ -83,6 +90,8 @@ namespace Roulette_server
             int n = r.Next(0, 36);
             angle = n * 9.729f;
             bmp = new Bitmap(img.Width, img.Height);
+
+            StartListening();
         }
 
 
@@ -121,6 +130,91 @@ namespace Roulette_server
             double n;
             n = a / 9.729;
             return Math.Truncate(n);
+        }
+        
+        private string[] estrazione(int n, int a)
+        {
+            string[] result = new string[5];
+            //nella metà
+            if (n <= 18)
+                result[0] = "1to18";
+            else
+                result[0] = "19to36";
+
+            //nei 12
+            if (n <= 12)
+                result[1] = "1st12";
+            else if(n <= 24)
+                result[1] = "2nd12";
+            else
+                result[1] = "3rd12";
+
+            //colore
+            result[2] = roulette.number[a].color;
+
+            //pari e dispari
+            if (n % 2 == 0)
+                result[3] = "even";
+            else
+                result[3] = "odd";
+
+            //fila
+            if (n % 3 == 0)
+                result[4] = "fila3";
+            else if ((n + 1) % 3 == 0)
+                result[4] = "fila2";
+            else if ((n + 2) % 3 == 0)
+                result[4] = "fila1";
+
+            return result;
+        }
+
+        public static void StartListening()
+        {
+
+
+            // Establish the local endpoint for the socket.  
+            // Dns.GetHostName returns the name of the   
+            // host running the application.  
+            IPAddress ipAddress = System.Net.IPAddress.Parse("127.0.0.1");
+            IPEndPoint localEndPoint = new IPEndPoint(ipAddress, 5000);
+
+            // Create a TCP/IP socket.  
+            Socket listener = new Socket(ipAddress.AddressFamily,
+                SocketType.Stream, ProtocolType.Tcp);
+
+            Console.WriteLine("Timeout : {0}", listener.ReceiveTimeout);
+
+            // Bind the socket to the local endpoint and   
+            // listen for incoming connections.  
+            try
+            {
+                listener.Bind(localEndPoint);
+                listener.Listen(10);
+
+                // Start listening for connections.  
+                while (true)
+                {
+
+                    Console.WriteLine("Waiting for a connection...");
+                    // Program is suspended while waiting for an incoming connection.  
+                    Socket handler = listener.Accept();
+
+                    ClientManager clientThread = new ClientManager(handler);
+                    Thread t = new Thread(new ThreadStart(clientThread.doClient));
+                    t.Start();
+
+                }
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.ToString());
+            }
+
+            Console.WriteLine("\nPress ENTER to continue...");
+            Console.Read();
+
         }
     }
 }
