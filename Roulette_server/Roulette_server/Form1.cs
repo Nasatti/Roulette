@@ -16,20 +16,21 @@ namespace Roulette_server
 {
 
     //odd dispari   even pari
-    //18 7
     public partial class Server : Form
     {
-        Image img; 
+        Image img;
         Random r = new Random();
         float angle;
         int i = 0;
         Roulette roulette = new Roulette();
         Bitmap bmp;
         string[] risultato = new string[5];
+        Thread th;
 
         public static string data = null;
         public Server()
         {
+            CheckForIllegalCrossThreadCalls = false;
             InitializeComponent();
             this.DoubleBuffered = true;
         }
@@ -38,12 +39,12 @@ namespace Roulette_server
         {
             angle = angle % 359.973f;
             angle += 9.729f;
-            
+
             Invalidate();
 
             i++;
             Random r = new Random();
-            if (i >= r.Next(30,50))
+            if (i >= r.Next(30, 50))
             {
                 if (timer_palla.Interval <= r.Next(100, 200))
                 {
@@ -65,7 +66,8 @@ namespace Roulette_server
                         p_number.Image = color.Images[2];
                         num.BackColor = Color.LimeGreen;
                     }
-                    else if (roulette.number[n].color == "red") { 
+                    else if (roulette.number[n].color == "red")
+                    {
                         p_number.Image = color.Images[0];
                         num.BackColor = Color.Red;
                     }
@@ -78,7 +80,7 @@ namespace Roulette_server
                     p_number.Visible = true;
                     num.Visible = true;
                     risultato = estrazione(roulette.number[n].n, n);
-                    
+
                 }
             }
         }
@@ -90,19 +92,17 @@ namespace Roulette_server
             int n = r.Next(0, 36);
             angle = n * 9.729f;
             bmp = new Bitmap(img.Width, img.Height);
-
-            StartListening();
         }
 
 
         private void Server_Paint(object sender, PaintEventArgs e)
-        { 
+        {
             Graphics g = Graphics.FromImage(bmp);
             g.Clear(Color.Transparent);
-            g.TranslateTransform(bmp.Width/2, bmp.Height/2);
+            g.TranslateTransform(bmp.Width / 2, bmp.Height / 2);
             g.RotateTransform(angle);
             g.TranslateTransform(-bmp.Width / 2, -bmp.Height / 2);
-            g.InterpolationMode=InterpolationMode.HighQualityBicubic;
+            g.InterpolationMode = InterpolationMode.HighQualityBicubic;
 
             g.DrawImage(img, 0, 0);
             e.Graphics.TranslateTransform(this.Width / 2, this.Width / 2);
@@ -131,7 +131,7 @@ namespace Roulette_server
             n = a / 9.729;
             return Math.Truncate(n);
         }
-        
+
         private string[] estrazione(int n, int a)
         {
             string[] result = new string[5];
@@ -144,7 +144,7 @@ namespace Roulette_server
             //nei 12
             if (n <= 12)
                 result[1] = "1st12";
-            else if(n <= 24)
+            else if (n <= 24)
                 result[1] = "2nd12";
             else
                 result[1] = "3rd12";
@@ -169,10 +169,8 @@ namespace Roulette_server
             return result;
         }
 
-        public static void StartListening()
+        public void StartServer()
         {
-
-
             // Establish the local endpoint for the socket.  
             // Dns.GetHostName returns the name of the   
             // host running the application.  
@@ -183,7 +181,6 @@ namespace Roulette_server
             Socket listener = new Socket(ipAddress.AddressFamily,
                 SocketType.Stream, ProtocolType.Tcp);
 
-            Console.WriteLine("Timeout : {0}", listener.ReceiveTimeout);
 
             // Bind the socket to the local endpoint and   
             // listen for incoming connections.  
@@ -203,7 +200,6 @@ namespace Roulette_server
                     ClientManager clientThread = new ClientManager(handler);
                     Thread t = new Thread(new ThreadStart(clientThread.doClient));
                     t.Start();
-
                 }
 
             }
@@ -214,7 +210,14 @@ namespace Roulette_server
 
             Console.WriteLine("\nPress ENTER to continue...");
             Console.Read();
+        }
 
+        private void btn_avvia_Click(object sender, EventArgs e)
+        {
+            th = new Thread(new ThreadStart(StartServer));
+            th.Start();
+            btn_avvia.Visible = false;
+            timer_palla.Enabled = true;
         }
     }
 }

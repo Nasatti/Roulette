@@ -35,12 +35,12 @@
             this.num = new System.Windows.Forms.Label();
             this.p_number = new System.Windows.Forms.PictureBox();
             this.color = new System.Windows.Forms.ImageList(this.components);
+            this.btn_avvia = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.p_number)).BeginInit();
             this.SuspendLayout();
             // 
             // timer_palla
             // 
-            this.timer_palla.Enabled = true;
             this.timer_palla.Interval = 50;
             this.timer_palla.Tick += new System.EventHandler(this.timer_palla_Tick);
             // 
@@ -55,10 +55,9 @@
             this.num.BackColor = System.Drawing.Color.Transparent;
             this.num.Font = new System.Drawing.Font("Microsoft YaHei", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.num.ForeColor = System.Drawing.Color.White;
-            this.num.Location = new System.Drawing.Point(233, 226);
-            this.num.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.num.Location = new System.Drawing.Point(311, 278);
             this.num.Name = "num";
-            this.num.Size = new System.Drawing.Size(36, 26);
+            this.num.Size = new System.Drawing.Size(42, 31);
             this.num.TabIndex = 0;
             this.num.Text = "11";
             this.num.Visible = false;
@@ -66,10 +65,10 @@
             // p_number
             // 
             this.p_number.BackColor = System.Drawing.Color.Transparent;
-            this.p_number.Location = new System.Drawing.Point(134, 133);
-            this.p_number.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.p_number.Location = new System.Drawing.Point(179, 164);
+            this.p_number.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.p_number.Name = "p_number";
-            this.p_number.Size = new System.Drawing.Size(225, 244);
+            this.p_number.Size = new System.Drawing.Size(300, 300);
             this.p_number.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.p_number.TabIndex = 1;
             this.p_number.TabStop = false;
@@ -83,20 +82,37 @@
             this.color.Images.SetKeyName(1, "black1.png");
             this.color.Images.SetKeyName(2, "green.png");
             // 
+            // btn_avvia
+            // 
+            this.btn_avvia.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btn_avvia.BackColor = System.Drawing.Color.Black;
+            this.btn_avvia.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_avvia.Font = new System.Drawing.Font("Palatino Linotype", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_avvia.ForeColor = System.Drawing.Color.Gold;
+            this.btn_avvia.Location = new System.Drawing.Point(527, 579);
+            this.btn_avvia.Margin = new System.Windows.Forms.Padding(4);
+            this.btn_avvia.Name = "btn_avvia";
+            this.btn_avvia.Size = new System.Drawing.Size(116, 34);
+            this.btn_avvia.TabIndex = 10;
+            this.btn_avvia.Text = "AVVIA";
+            this.btn_avvia.UseVisualStyleBackColor = false;
+            this.btn_avvia.Click += new System.EventHandler(this.btn_avvia_Click);
+            // 
             // Server
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DarkGreen;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(494, 517);
+            this.ClientSize = new System.Drawing.Size(656, 626);
+            this.Controls.Add(this.btn_avvia);
             this.Controls.Add(this.num);
             this.Controls.Add(this.p_number);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.MaximumSize = new System.Drawing.Size(510, 556);
-            this.MinimumSize = new System.Drawing.Size(510, 556);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.MaximumSize = new System.Drawing.Size(674, 673);
+            this.MinimumSize = new System.Drawing.Size(674, 673);
             this.Name = "Server";
             this.Text = "Server";
             this.Load += new System.EventHandler(this.Server_Load);
@@ -114,6 +130,7 @@
         private System.Windows.Forms.Label num;
         private System.Windows.Forms.PictureBox p_number;
         private System.Windows.Forms.ImageList color;
+        private System.Windows.Forms.Button btn_avvia;
     }
 }
 

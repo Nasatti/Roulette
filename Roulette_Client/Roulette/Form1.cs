@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
+using System.Threading;
 
 namespace Roulette
 {
@@ -17,6 +18,10 @@ namespace Roulette
         int nfish = 0;
         int f;
         Dictionary<string, int> puntata = new Dictionary<string, int>();
+        byte[] bytes = new byte[1024];
+        IPAddress ipAddress;
+        IPEndPoint remoteEP;
+        Socket sender;
         public Client()
         {
             InitializeComponent();
@@ -130,6 +135,7 @@ namespace Roulette
             }
             catch (Exception e)
             {
+                MessageBox.Show(e.ToString());
                 return false;
             }
         }
@@ -179,7 +185,6 @@ namespace Roulette
         {
             nfish = 0;
             f = 1;
-            StartClient();
         }
         public void ricarica(string s)
         {
@@ -505,6 +510,37 @@ namespace Roulette
             {
                 Console.WriteLine(e.ToString());
             }
+        }
+        public void Connection()
+        {
+            try
+            {
+                ipAddress = System.Net.IPAddress.Parse("127.0.0.1");
+                remoteEP = new IPEndPoint(ipAddress, 5000);
+                sender = new Socket(ipAddress.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
+                sender.Connect(remoteEP);
+                int bytesRec = sender.Receive(bytes);
+                MessageBox.Show(bytesRec.ToString());
+                stato.Text = "connesso";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+                stato.Text = "disconnesso";
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            p_inizio.Visible = false;
+            p_gioco.Visible = true;
+            Thread t = new Thread(new ThreadStart(Connection));
+            t.Start();
         }
     }
 }

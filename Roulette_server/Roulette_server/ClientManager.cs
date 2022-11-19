@@ -25,18 +25,21 @@ namespace Roulette_server
             while (data != "Quit$")
             {
                 // An incoming connection needs to be processed.  
-                data = "";
+                //data = "";
+                byte[] msg = Encoding.ASCII.GetBytes("ciao");
+
+                clientSocket.Send(msg);
                 while (data.IndexOf("$") == -1)
                 {
-                    int bytesRec = clientSocket.Receive(bytes);
+                    /*int bytesRec = clientSocket.Receive(bytes);
                     data += Encoding.ASCII.GetString(bytes, 0, bytesRec);
+                */
                 }
 
                 // Show the data on the console.  
-                Console.WriteLine("Messaggio ricevuto : {0}", data);
 
                 // Echo the data back to the client.  
-                byte[] msg = Encoding.ASCII.GetBytes(data);
+                //byte[] msg = Encoding.ASCII.GetBytes(data);
 
                 clientSocket.Send(msg);
             }
