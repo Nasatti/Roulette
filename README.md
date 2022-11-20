@@ -19,13 +19,14 @@ Se indovini vinci:trophy: altrimenti perdi:x:
 
  ##  Puntate:slot_machine:
  -
+ - Numero: scegli un numero
  - Colore: scelta tra Nero o Rosso. Se uscisse verde verranno ridati i soldi
  - Metà: scelta tra la prima metà dei numeri(0,18) o la seconda(19,36)
  - Terzo: scelto in quale terzo si trova il numero (1-12) (13-24) (25-36)
  - Riga: scelta la riga del numero
  - Quadrato: scelti 4 numeri vicini tra loro a formare un quadrato
  - Coppia: scelti 2 numeri vicini tra loro
- - Numero: scegli un numero
+
  
  ##  Quote:money_with_wings:
 | Quota     | Giocate esatte                                              |
