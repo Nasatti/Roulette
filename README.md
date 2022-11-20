@@ -3,22 +3,19 @@ Il titolo è autoesplicativo, si tratta di una roulette dove puoi puntare su ci�
 
 Se indovini vinci:trophy: altrimenti perdi:x:
 
- Funzionamento:paperclip:
- -
- - ci si connette al server 
- - si decide su cosa puntare(spiegazione in seguito) e quanto puntare
- - ogni 30 secondi la ruota gira 
- - se vinci quello che viene puntato viene moltiplicato per la quota, mentre se perdi vengono sottratti i soldi puntati
+ ## Funzionamento:paperclip:
+ - Ci si connette al server 
+ - Si decide su cosa puntare(spiegazione in seguito) e quanto puntare
+ - Ogni 30 secondi la ruota gira 
+ - Se vinci quello che viene puntato viene moltiplicato per la quota, mentre se perdi vengono sottratti i soldi puntati
  
- Regole:book:
- -
- - l'importo minimo di soldi è di 1€
- - le fish si suddividono in 1€, 5€, 10€, 25€, 50€, 100€.
- - si può scommettere solo quando la roulette è ferma. Se sta girando aspetti
- - numeri vanno da 0 a 36
+ ## Regole:book:
+ - L'importo minimo di soldi è di 1€
+ - Le fish si suddividono in 1€, 5€, 10€, 25€, 50€, 100€.
+ - Si può scommettere solo quando la roulette è ferma. Se sta girando aspetti
+ - Numeri vanno da 0 a 36
 
  ##  Puntate:slot_machine:
- -
  - Numero: scegli un numero
  - Colore: scelta tra Nero o Rosso. Se uscisse verde verranno ridati i soldi
  - Metà: scelta tra la prima metà dei numeri(0,18) o la seconda(19,36)
