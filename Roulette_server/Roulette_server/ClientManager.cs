@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Net;
 using System.Net.Sockets;
+using System.Diagnostics;
 
 namespace Roulette_server
 {
@@ -41,7 +42,7 @@ namespace Roulette_server
                 // Echo the data back to the client.  
                 //byte[] msg = Encoding.ASCII.GetBytes(data);
 
-                clientSocket.Send(msg);
+                //clientSocket.Send(msg);
             }
             clientSocket.Shutdown(SocketShutdown.Both);
             clientSocket.Close();

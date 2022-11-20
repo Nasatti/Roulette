@@ -132,7 +132,7 @@ namespace Roulette
             this.fish1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.fish1.Image = ((System.Drawing.Image)(resources.GetObject("fish1.Image")));
             this.fish1.Location = new System.Drawing.Point(1, 0);
-            this.fish1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.fish1.Margin = new System.Windows.Forms.Padding(4);
             this.fish1.Name = "fish1";
             this.fish1.Size = new System.Drawing.Size(87, 73);
             this.fish1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -172,7 +172,7 @@ namespace Roulette
             this.button1.Font = new System.Drawing.Font("Palatino Linotype", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.Color.Gold;
             this.button1.Location = new System.Drawing.Point(36, 49);
-            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button1.Margin = new System.Windows.Forms.Padding(4);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(109, 33);
             this.button1.TabIndex = 9;
@@ -188,7 +188,7 @@ namespace Roulette
             this.button2.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.ForeColor = System.Drawing.Color.Gold;
             this.button2.Location = new System.Drawing.Point(884, 30);
-            this.button2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button2.Margin = new System.Windows.Forms.Padding(4);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(105, 53);
             this.button2.TabIndex = 10;
@@ -201,7 +201,7 @@ namespace Roulette
             this.fish5.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.fish5.Image = ((System.Drawing.Image)(resources.GetObject("fish5.Image")));
             this.fish5.Location = new System.Drawing.Point(0, 0);
-            this.fish5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.fish5.Margin = new System.Windows.Forms.Padding(4);
             this.fish5.Name = "fish5";
             this.fish5.Size = new System.Drawing.Size(87, 73);
             this.fish5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -214,7 +214,7 @@ namespace Roulette
             this.fish10.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.fish10.Image = ((System.Drawing.Image)(resources.GetObject("fish10.Image")));
             this.fish10.Location = new System.Drawing.Point(0, 0);
-            this.fish10.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.fish10.Margin = new System.Windows.Forms.Padding(4);
             this.fish10.Name = "fish10";
             this.fish10.Size = new System.Drawing.Size(87, 73);
             this.fish10.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -227,7 +227,7 @@ namespace Roulette
             this.fish25.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.fish25.Image = ((System.Drawing.Image)(resources.GetObject("fish25.Image")));
             this.fish25.Location = new System.Drawing.Point(0, 0);
-            this.fish25.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.fish25.Margin = new System.Windows.Forms.Padding(4);
             this.fish25.Name = "fish25";
             this.fish25.Size = new System.Drawing.Size(87, 73);
             this.fish25.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -240,7 +240,7 @@ namespace Roulette
             this.fish50.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.fish50.Image = ((System.Drawing.Image)(resources.GetObject("fish50.Image")));
             this.fish50.Location = new System.Drawing.Point(0, 0);
-            this.fish50.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.fish50.Margin = new System.Windows.Forms.Padding(4);
             this.fish50.Name = "fish50";
             this.fish50.Size = new System.Drawing.Size(87, 73);
             this.fish50.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -253,7 +253,7 @@ namespace Roulette
             this.fish100.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.fish100.Image = ((System.Drawing.Image)(resources.GetObject("fish100.Image")));
             this.fish100.Location = new System.Drawing.Point(0, 0);
-            this.fish100.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.fish100.Margin = new System.Windows.Forms.Padding(4);
             this.fish100.Name = "fish100";
             this.fish100.Size = new System.Drawing.Size(87, 73);
             this.fish100.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -1112,7 +1112,7 @@ namespace Roulette
             this.panel1.Controls.Add(this.b3);
             this.panel1.ForeColor = System.Drawing.Color.White;
             this.panel1.Location = new System.Drawing.Point(40, 153);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(949, 326);
             this.panel1.TabIndex = 0;
@@ -1187,6 +1187,7 @@ namespace Roulette
             this.p_gioco.Controls.Add(this.panel_fish50);
             this.p_gioco.Location = new System.Drawing.Point(0, 0);
             this.p_gioco.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.p_gioco.MinimumSize = new System.Drawing.Size(1028, 482);
             this.p_gioco.Name = "p_gioco";
             this.p_gioco.Size = new System.Drawing.Size(1028, 482);
             this.p_gioco.TabIndex = 22;
@@ -1200,7 +1201,7 @@ namespace Roulette
             this.button3.Font = new System.Drawing.Font("Palatino Linotype", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button3.ForeColor = System.Drawing.Color.Gold;
             this.button3.Location = new System.Drawing.Point(173, 241);
-            this.button3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button3.Margin = new System.Windows.Forms.Padding(4);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(147, 64);
             this.button3.TabIndex = 22;
@@ -1254,6 +1255,7 @@ namespace Roulette
             // 
             // p_inizio
             // 
+            this.p_inizio.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.p_inizio.Controls.Add(this.pictureBox1);
             this.p_inizio.Controls.Add(this.label7);
             this.p_inizio.Controls.Add(this.button3);
@@ -1274,7 +1276,7 @@ namespace Roulette
             this.Controls.Add(this.p_inizio);
             this.Controls.Add(this.p_gioco);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MinimumSize = new System.Drawing.Size(978, 445);
             this.Name = "Client";
             this.Text = "Client";

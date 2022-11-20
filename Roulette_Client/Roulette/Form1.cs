@@ -520,7 +520,7 @@ namespace Roulette
                 sender = new Socket(ipAddress.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
                 sender.Connect(remoteEP);
                 int bytesRec = sender.Receive(bytes);
-                MessageBox.Show(bytesRec.ToString());
+                MessageBox.Show("a "+bytesRec.ToString());
                 stato.Text = "connesso";
             }
             catch (Exception ex)
