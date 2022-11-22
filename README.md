@@ -17,7 +17,7 @@ Se indovini vinci:trophy: altrimenti perdi:x:
 
  ##  Puntate:slot_machine:
  - Numero: scegli un numero
- - Colore: scelta tra Nero o Rosso. Se uscisse verde verranno ridati i soldi
+ - Colore: scelta tra Nero o Rosso.
  - Metà: scelta tra la prima metà dei numeri(0,18) o la seconda(19,36)
  - Terzo: scelto in quale terzo si trova il numero (1-12) (13-24) (25-36)
  - Riga: scelta la riga del numero
@@ -30,3 +30,9 @@ Se indovini vinci:trophy: altrimenti perdi:x:
 | x3        | Terzo, riga                                                 |
 | x36       | Numero                                                      |
 | x50       | Se indovini lo 0                                            |
+
+## ATTENZIONE:warning:
+
+Lo 0 è verde, non è né pari né dispari e non fa parte di nessuna metà e nemmeno di nessun terzo,
+
+perciò se uscisse e non l'avessi puntato, HAI PERSO:)
