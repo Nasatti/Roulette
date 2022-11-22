@@ -10,7 +10,7 @@ Se indovini vinci:trophy: altrimenti perdi:x:
  - Se vinci quello che viene puntato viene moltiplicato per la quota, mentre se perdi vengono sottratti i soldi puntati
  
  ## Regole:book:
- - L'importo minimo di soldi è di 1€
+ - L'importo minimo di soldi è di 1€ e quello massimo di 500€
  - Le fish si suddividono in 1€, 5€, 10€, 25€, 50€, 100€.
  - Si può scommettere solo quando la roulette è ferma. Se sta girando aspetti
  - Numeri vanno da 0 a 36
