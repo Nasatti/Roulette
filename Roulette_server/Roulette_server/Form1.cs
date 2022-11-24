@@ -25,7 +25,7 @@ namespace Roulette_server
         Roulette roulette = new Roulette();
         Bitmap bmp;
         string[] risultato = new string[5];
-        Thread th;
+        Thread t;
 
         public static string data = null;
         public Server()
@@ -193,7 +193,6 @@ namespace Roulette_server
                 while (true)
                 {
 
-                    Console.WriteLine("Waiting for a connection...");
                     // Program is suspended while waiting for an incoming connection.  
                     Socket handler = listener.Accept();
 
@@ -214,8 +213,8 @@ namespace Roulette_server
 
         private void btn_avvia_Click(object sender, EventArgs e)
         {
-            th = new Thread(new ThreadStart(StartServer));
-            th.Start();
+            t = new Thread(new ThreadStart(StartServer));
+            t.Start();
             btn_avvia.Visible = false;
             timer_palla.Enabled = true;
         }

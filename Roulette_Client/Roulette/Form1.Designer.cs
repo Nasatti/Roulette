@@ -100,8 +100,6 @@ namespace Roulette
             this.fish = new System.Windows.Forms.ImageList(this.components);
             this.label2 = new System.Windows.Forms.Label();
             this.stato = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
             this.p_gioco = new System.Windows.Forms.Panel();
             this.button3 = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -1132,48 +1130,29 @@ namespace Roulette
             // 
             this.label2.AutoSize = true;
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(365, 10);
+            this.label2.Location = new System.Drawing.Point(432, 10);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(80, 16);
+            this.label2.Size = new System.Drawing.Size(76, 16);
             this.label2.TabIndex = 18;
-            this.label2.Text = "stato server:";
+            this.label2.Text = "stato gioco:";
             // 
             // stato
             // 
             this.stato.AutoSize = true;
             this.stato.ForeColor = System.Drawing.Color.White;
-            this.stato.Location = new System.Drawing.Point(445, 10);
+            this.stato.Location = new System.Drawing.Point(512, 10);
             this.stato.Name = "stato";
-            this.stato.Size = new System.Drawing.Size(84, 16);
+            this.stato.Size = new System.Drawing.Size(40, 16);
             this.stato.TabIndex = 19;
-            this.stato.Text = "disconnesso";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(635, 10);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(40, 16);
-            this.label3.TabIndex = 21;
-            this.label3.Text = "punta";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(555, 10);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(76, 16);
-            this.label4.TabIndex = 20;
-            this.label4.Text = "stato gioco:";
+            this.stato.Text = "punta";
             // 
             // p_gioco
             // 
+            this.p_gioco.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.p_gioco.Controls.Add(this.label1);
-            this.p_gioco.Controls.Add(this.label3);
             this.p_gioco.Controls.Add(this.panel1);
-            this.p_gioco.Controls.Add(this.label4);
             this.p_gioco.Controls.Add(this.label_ricarica);
             this.p_gioco.Controls.Add(this.stato);
             this.p_gioco.Controls.Add(this.button1);
@@ -1277,6 +1256,7 @@ namespace Roulette
             this.Controls.Add(this.p_gioco);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
+            this.MaximumSize = new System.Drawing.Size(1041, 527);
             this.MinimumSize = new System.Drawing.Size(978, 445);
             this.Name = "Client";
             this.Text = "Client";
@@ -1373,8 +1353,6 @@ namespace Roulette
         private System.Windows.Forms.ImageList fish;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label stato;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Panel p_gioco;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.PictureBox pictureBox1;

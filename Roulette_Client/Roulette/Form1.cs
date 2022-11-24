@@ -10,6 +10,8 @@ using System.Net;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace Roulette
 {
@@ -24,7 +26,9 @@ namespace Roulette
         Socket sender;
         public Client()
         {
+            CheckForIllegalCrossThreadCalls = false;
             InitializeComponent();
+            this.DoubleBuffered = true;
         }
         private void pictureBox1_Click(object sender, EventArgs e)
         {
@@ -447,100 +451,79 @@ namespace Roulette
             Button_Fish(bfila3, "fila3", e);
         }
 
-        public static void StartClient()
+        public void StartClient()
         {
             // Data buffer for incoming data.  
             byte[] bytes = new byte[1024];
-            int count = 0;
 
             // Connect to a remote device.  
             try
             {
                 string data = "";
-                IPAddress ipAddress = System.Net.IPAddress.Parse("127.0.0.1");
-                IPEndPoint remoteEP = new IPEndPoint(ipAddress, 5000);
+                ipAddress = System.Net.IPAddress.Parse("127.0.0.1");
+                remoteEP = new IPEndPoint(ipAddress, 5000);
 
-                Socket sender = new Socket(ipAddress.AddressFamily,
+                sender = new Socket(ipAddress.AddressFamily,
                     SocketType.Stream, ProtocolType.Tcp);
-                Random stringa_casuale = new Random();
-                string stringa_da_inviare = "";
 
                 try
                 {
                     sender.Connect(remoteEP);
+                    Application.DoEvents();
 
-                    while (data != "Quit$")
+                    string jsonString = JsonSerializer.Serialize(puntata);
+                    while (data=="End$")
                     {
-                        stringa_da_inviare = "Messaggio di prova$";
-                        if (stringa_casuale.Next(0, 10) > 8 && count > 15)
-                            stringa_da_inviare = "Quit$";
-                        byte[] msg = Encoding.ASCII.GetBytes(stringa_da_inviare);              //("This is a test<EOF>");
-
-                        int bytesSent = sender.Send(msg);
                         data = "";
                         while (data.IndexOf("$") == -1)
                         {
                             int bytesRec = sender.Receive(bytes);
                             data += Encoding.ASCII.GetString(bytes, 0, bytesRec);
                         }
-                        Console.WriteLine("Messaggio ricevuto: " + data);
-                        System.Threading.Thread.Sleep(1000);
-                        count++;
+                        stato.Text = data.Substring(0, data.Length - 1);
+
+                        byte[] msg = Encoding.ASCII.GetBytes(jsonString);
+                        int bytesSent = sender.Send(msg);
+                        while (data.IndexOf("$") == -1)
+                        {
+                            int bytesRec = sender.Receive(bytes);
+                            data += Encoding.ASCII.GetString(bytes, 0, bytesRec);
+                        }
+                        MessageBox.Show(data);
                     }
                     // Release the socket.
                     sender.Shutdown(SocketShutdown.Both);
                     sender.Close();
-
                 }
                 catch (ArgumentNullException ane)
                 {
-                    Console.WriteLine("ArgumentNullException : {0}", ane.ToString());
+                    MessageBox.Show("ArgumentNullException : {0}\nRiprovare l'accesso", ane.ToString());
                 }
                 catch (SocketException se)
                 {
-                    Console.WriteLine("SocketException : {0}", se.ToString());
+                    MessageBox.Show("SocketException : {0}\nRiprovare l'accesso", se.ToString());
                 }
                 catch (Exception e)
                 {
-                    Console.WriteLine("Unexpected exception : {0}", e.ToString());
+                    MessageBox.Show("Unexpected exception : {0}\nRiprovare l'accesso", e.ToString());
                 }
 
             }
             catch (Exception e)
             {
-                Console.WriteLine(e.ToString());
-            }
-        }
-        public void Connection()
-        {
-            try
-            {
-                ipAddress = System.Net.IPAddress.Parse("127.0.0.1");
-                remoteEP = new IPEndPoint(ipAddress, 5000);
-                sender = new Socket(ipAddress.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
-                sender.Connect(remoteEP);
-                int bytesRec = sender.Receive(bytes);
-                MessageBox.Show("a "+bytesRec.ToString());
-                stato.Text = "connesso";
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
-                stato.Text = "disconnesso";
+                MessageBox.Show(e.ToString());
             }
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-
+            Thread t = new Thread(new ThreadStart(StartClient));
+            t.Start();
         }
-
         private void button3_Click(object sender, EventArgs e)
         {
             p_inizio.Visible = false;
             p_gioco.Visible = true;
-            Thread t = new Thread(new ThreadStart(Connection));
-            t.Start();
         }
     }
 }
