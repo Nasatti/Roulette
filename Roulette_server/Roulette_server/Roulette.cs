@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Windows.Forms;
 
 namespace Roulette_server
 {
@@ -52,6 +53,21 @@ namespace Roulette_server
                 new Number(26,"black"),
             });
 
+        }
+        public int Quota(string[] n_estratto, List<string> n_giocatore, List<int> quota)
+        {
+            int q = 0;
+            foreach (string g in n_giocatore)
+            {
+                foreach (string n in n_estratto)
+                {
+                    if (g == n)
+                    {
+                        MessageBox.Show("WIN");
+                    }
+                }
+            }
+            return q;
         }
     }
 }

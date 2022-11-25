@@ -485,7 +485,7 @@ namespace Roulette
                             data = Encoding.ASCII.GetString(bytes, 0, bytesRec);
                         }
                         MessageBox.Show(data);
-                        msg = Encoding.ASCII.GetBytes("Quit$");
+                        msg = Encoding.ASCII.GetBytes("End");
                         sender.Send(msg);
                     }
                     // Release the socket.
@@ -494,21 +494,22 @@ namespace Roulette
                 }
                 catch (ArgumentNullException ane)
                 {
-                    MessageBox.Show("ArgumentNullException : {0}\nRiprovare l'accesso", ane.ToString());
+
+                    Console.WriteLine("ArgumentNullException : {0}\nRiprovare l'accesso", ane.ToString());
                 }
                 catch (SocketException se)
                 {
-                    MessageBox.Show("SocketException : {0}\nRiprovare l'accesso", se.ToString());
+                    Console.WriteLine("SocketException : {0}\nRiprovare l'accesso", se.ToString());
                 }
                 catch (Exception e)
                 {
-                    MessageBox.Show("Unexpected exception : {0}\nRiprovare l'accesso", e.ToString());
+                    Console.WriteLine("Unexpected exception : {0}\nRiprovare l'accesso", e.ToString());
                 }
 
             }
             catch (Exception e)
             {
-                MessageBox.Show(e.ToString());
+                Console.WriteLine(e.ToString());
             }
         }
 
@@ -521,6 +522,18 @@ namespace Roulette
         {
             p_inizio.Visible = false;
             p_gioco.Visible = true;
+            Thread t = new Thread(new ThreadStart(Gioca_Wait));
+            t.Start();
+        }
+
+        private void btn_esci_Click(object senderr, EventArgs e)
+        {
+            sender.Shutdown(SocketShutdown.Both);
+            sender.Close();
+            this.Close();
+        }
+        public void Gioca_Wait()
+        {
             try
             {
                 ipAddress = System.Net.IPAddress.Parse("127.0.0.1");
@@ -535,15 +548,22 @@ namespace Roulette
                     int bytesRec = sender.Receive(bytes);
                     data = Encoding.ASCII.GetString(bytes, 0, bytesRec);
                 }
+
                 if (data == "Wait$")
+                {
                     btn_punta.Enabled = false;
-                else if (data == "Punta$")
+                    Application.DoEvents();
+                    int bytesRec = sender.Receive(bytes);
+                    data = Encoding.ASCII.GetString(bytes, 0, bytesRec);
+                }
+                if (data == "Punta$")
                     btn_punta.Enabled = true;
                 stato.Text = data.Substring(0, data.Length - 1);
+
             }
-            catch(Exception e)
+            catch (Exception e)
             {
-                MessageBox.Show(e.ToString()+"\nriprova l'accesso");
+                MessageBox.Show(e.ToString() + "\nriprova l'accesso");
                 p_inizio.Visible = true;
                 p_gioco.Visible = false;
             }

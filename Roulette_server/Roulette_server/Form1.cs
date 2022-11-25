@@ -63,25 +63,7 @@ namespace Roulette_server
                     stato = true;
 
 
-                    //while (true)
-                    //{
-
-                        // Program is suspended while waiting for an incoming connection.  
-                        Socket handler = listener.Accept();
-                        if (stato)
-                        {
-                            byte[] msg = Encoding.ASCII.GetBytes("Giro Ruota$");
-                            handler.Send(msg);
-                        }
-                        else
-                        {
-                            byte[] msg = Encoding.ASCII.GetBytes("Wait$");
-                            handler.Send(msg);
-                        }
-                        ClientManager clientThread = new ClientManager(handler, this);
-                        Thread t = new Thread(new ThreadStart(clientThread.doClient));
-                        t.Start();
-                    //}
+                    
 
 
 
@@ -149,6 +131,7 @@ namespace Roulette_server
             angle = n * 9.729f;
             timer_palla.Interval = 50;
             timer_palla.Enabled = true;
+            stato = false;
             timer_avvio.Enabled = false;
             p_number.Visible = false;
             num.Visible = false;
@@ -161,39 +144,41 @@ namespace Roulette_server
             return Math.Truncate(n);
         }
 
-        private string[] estrazione(int n, int a)
+        public string[] estrazione(int n, int a)
         {
-            string[] result = new string[5];
+            string[] result = new string[6];
+            result[0] = n.ToString();
             //nella metà
             if (n <= 18)
-                result[0] = "1to18";
+                result[1] = "1to18";
             else
-                result[0] = "19to36";
+                result[1] = "19to36";
 
             //nei 12
             if (n <= 12)
-                result[1] = "1st12";
+            if (n <= 12)
+                result[2] = "1st12";
             else if (n <= 24)
-                result[1] = "2nd12";
+                result[2] = "2nd12";
             else
-                result[1] = "3rd12";
+                result[2] = "3rd12";
 
             //colore
-            result[2] = roulette.number[a].color;
+            result[3] = roulette.number[a].color;
 
             //pari e dispari
             if (n % 2 == 0)
-                result[3] = "even";
+                result[4] = "even";
             else
-                result[3] = "odd";
+                result[4] = "odd";
 
             //fila
             if (n % 3 == 0)
-                result[4] = "fila3";
+                result[5] = "fila3";
             else if ((n + 1) % 3 == 0)
-                result[4] = "fila2";
+                result[5] = "fila2";
             else if ((n + 2) % 3 == 0)
-                result[4] = "fila1";
+                result[5] = "fila1";
 
             return result;
         }
@@ -219,15 +204,39 @@ namespace Roulette_server
                 listener.Listen(10);
 
                 // Start listening for connections.  
-                
+
+                //while (true)
+                //{
+
+                // Program is suspended while waiting for an incoming connection.
+                int i = 0;
+                Socket handler = listener.Accept();
+                while (true)
+                {
+                    
+                    if (stato)
+                    {
+                        byte[] msg = Encoding.ASCII.GetBytes("Punta$");
+                        handler.Send(msg);
+                        ClientManager clientThread = new ClientManager(handler, this);
+                        Thread t = new Thread(new ThreadStart(clientThread.doClient));
+                        t.Start();
+                        break;
+                    }
+                    else if(i == 0)
+                    {
+                        byte[] msg = Encoding.ASCII.GetBytes("Wait$");
+                        handler.Send(msg);
+                        i++;
+                    }
+                    
+                }
+                //}
             }
             catch (Exception e)
             {
                 Console.WriteLine(e.ToString());
             }
-
-            Console.WriteLine("\nPress ENTER to continue...");
-            Console.Read();
         }
 
         private void btn_avvia_Click(object sender, EventArgs e)

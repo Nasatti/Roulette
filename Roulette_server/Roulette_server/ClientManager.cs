@@ -18,6 +18,7 @@ namespace Roulette_server
         byte[] bytes = new byte[1024];
         string data = "";
         Server s;
+        Roulette roulette = new Roulette();
 
         public ClientManager(Socket clientSocket, Server s)
         {
@@ -28,27 +29,34 @@ namespace Roulette_server
         public void doClient()
         {
             Dictionary<string, int> puntata = new Dictionary<string, int>();
-            while (data != "Quit$")
+            while (data != "End")
             {
                 // An incoming connection needs to be processed.  
                 //data = "";
-                byte[] msg = Encoding.ASCII.GetBytes("Giro Ruota$");
+                byte[] msg = Encoding.ASCII.GetBytes("controllo risultati$");
                 clientSocket.Send(msg);
                 int bytesRec = clientSocket.Receive(bytes);
                 data += Encoding.ASCII.GetString(bytes, 0, bytesRec);
                 puntata = JsonSerializer.Deserialize<Dictionary<string, int>>(data);
+                string[] n_estratto = s.Risultato();
+
+                List<string> r = new List<string>();
+                List<int> q = new List<int>();
                 foreach (KeyValuePair<string, int> pair in puntata)
                 {
-                    MessageBox.Show(pair.ToString());
+                    string check1 = pair.ToString();
+                    string[] check2 = check1.Split(',');
+                    r.Append(check2[0].Substring(1));
+                    q.Append(int.Parse(check2[1].Substring(0, check2[1].Length - 1)));
                 }
-
 
 
                 // Show the data on the console.  
 
                 // Echo the data back to the client.  
-                string[] stringa = s.Risultato();
-                msg = Encoding.ASCII.GetBytes(stringa[0] + " " + stringa[1] + "$");
+
+                roulette.Quota(n_estratto, r, q);
+                msg = Encoding.ASCII.GetBytes("End$");
                 clientSocket.Send(msg);
                 bytesRec = clientSocket.Receive(bytes);
                 data += Encoding.ASCII.GetString(bytes, 0, bytesRec);
