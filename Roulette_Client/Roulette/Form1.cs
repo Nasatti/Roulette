@@ -460,19 +460,13 @@ namespace Roulette
             try
             {
                 string data = "";
-                ipAddress = System.Net.IPAddress.Parse("127.0.0.1");
-                remoteEP = new IPEndPoint(ipAddress, 5000);
-
-                sender = new Socket(ipAddress.AddressFamily,
-                    SocketType.Stream, ProtocolType.Tcp);
 
                 try
                 {
-                    sender.Connect(remoteEP);
-                    Application.DoEvents();
+
 
                     string jsonString = JsonSerializer.Serialize(puntata);
-                    while (data=="End$")
+                    while (data != "End$")
                     {
                         data = "";
                         while (data.IndexOf("$") == -1)
@@ -481,19 +475,22 @@ namespace Roulette
                             data += Encoding.ASCII.GetString(bytes, 0, bytesRec);
                         }
                         stato.Text = data.Substring(0, data.Length - 1);
-
+                        Application.DoEvents();
                         byte[] msg = Encoding.ASCII.GetBytes(jsonString);
-                        int bytesSent = sender.Send(msg);
+                        sender.Send(msg);
+                        data = "";
                         while (data.IndexOf("$") == -1)
                         {
                             int bytesRec = sender.Receive(bytes);
-                            data += Encoding.ASCII.GetString(bytes, 0, bytesRec);
+                            data = Encoding.ASCII.GetString(bytes, 0, bytesRec);
                         }
                         MessageBox.Show(data);
+                        msg = Encoding.ASCII.GetBytes("Quit$");
+                        sender.Send(msg);
                     }
                     // Release the socket.
-                    sender.Shutdown(SocketShutdown.Both);
-                    sender.Close();
+                    //sender.Shutdown(SocketShutdown.Both);
+                    //sender.Close();
                 }
                 catch (ArgumentNullException ane)
                 {
@@ -520,10 +517,36 @@ namespace Roulette
             Thread t = new Thread(new ThreadStart(StartClient));
             t.Start();
         }
-        private void button3_Click(object sender, EventArgs e)
+        private void button3_Click(object senderr, EventArgs ee)
         {
             p_inizio.Visible = false;
             p_gioco.Visible = true;
+            try
+            {
+                ipAddress = System.Net.IPAddress.Parse("127.0.0.1");
+                remoteEP = new IPEndPoint(ipAddress, 5000);
+
+                sender = new Socket(ipAddress.AddressFamily,
+                    SocketType.Stream, ProtocolType.Tcp);
+                sender.Connect(remoteEP);
+                string data = "";
+                while (data.IndexOf("$") == -1)
+                {
+                    int bytesRec = sender.Receive(bytes);
+                    data = Encoding.ASCII.GetString(bytes, 0, bytesRec);
+                }
+                if (data == "Wait$")
+                    btn_punta.Enabled = false;
+                else if (data == "Punta$")
+                    btn_punta.Enabled = true;
+                stato.Text = data.Substring(0, data.Length - 1);
+            }
+            catch(Exception e)
+            {
+                MessageBox.Show(e.ToString()+"\nriprova l'accesso");
+                p_inizio.Visible = true;
+                p_gioco.Visible = false;
+            }
         }
     }
 }

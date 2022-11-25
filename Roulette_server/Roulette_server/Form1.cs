@@ -26,6 +26,10 @@ namespace Roulette_server
         Bitmap bmp;
         string[] risultato = new string[5];
         Thread t;
+        bool stato = false;
+        IPAddress ipAddress;
+        IPEndPoint localEndPoint; 
+        Socket listener;
 
         public static string data = null;
         public Server()
@@ -56,6 +60,31 @@ namespace Roulette_server
                 }
                 else
                 {
+                    stato = true;
+
+
+                    //while (true)
+                    //{
+
+                        // Program is suspended while waiting for an incoming connection.  
+                        Socket handler = listener.Accept();
+                        if (stato)
+                        {
+                            byte[] msg = Encoding.ASCII.GetBytes("Giro Ruota$");
+                            handler.Send(msg);
+                        }
+                        else
+                        {
+                            byte[] msg = Encoding.ASCII.GetBytes("Wait$");
+                            handler.Send(msg);
+                        }
+                        ClientManager clientThread = new ClientManager(handler, this);
+                        Thread t = new Thread(new ThreadStart(clientThread.doClient));
+                        t.Start();
+                    //}
+
+
+
                     timer_palla.Enabled = false;
                     timer_avvio.Enabled = true;
                     int n = (int)angleToNumber(angle);
@@ -174,11 +203,11 @@ namespace Roulette_server
             // Establish the local endpoint for the socket.  
             // Dns.GetHostName returns the name of the   
             // host running the application.  
-            IPAddress ipAddress = System.Net.IPAddress.Parse("127.0.0.1");
-            IPEndPoint localEndPoint = new IPEndPoint(ipAddress, 5000);
+            ipAddress = System.Net.IPAddress.Parse("127.0.0.1");
+            localEndPoint = new IPEndPoint(ipAddress, 5000);
 
             // Create a TCP/IP socket.  
-            Socket listener = new Socket(ipAddress.AddressFamily,
+            listener = new Socket(ipAddress.AddressFamily,
                 SocketType.Stream, ProtocolType.Tcp);
 
 
@@ -190,17 +219,7 @@ namespace Roulette_server
                 listener.Listen(10);
 
                 // Start listening for connections.  
-                while (true)
-                {
-
-                    // Program is suspended while waiting for an incoming connection.  
-                    Socket handler = listener.Accept();
-
-                    ClientManager clientThread = new ClientManager(handler);
-                    Thread t = new Thread(new ThreadStart(clientThread.doClient));
-                    t.Start();
-                }
-
+                
             }
             catch (Exception e)
             {
@@ -217,6 +236,10 @@ namespace Roulette_server
             t.Start();
             btn_avvia.Visible = false;
             timer_palla.Enabled = true;
+        }
+        public string[] Risultato()
+        {
+            return risultato;
         }
     }
 }

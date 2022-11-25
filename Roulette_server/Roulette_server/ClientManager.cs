@@ -15,12 +15,14 @@ namespace Roulette_server
     public class ClientManager
     {
         Socket clientSocket;
-        byte[] bytes = new Byte[1024];
-        String data = "";
+        byte[] bytes = new byte[1024];
+        string data = "";
+        Server s;
 
-        public ClientManager(Socket clientSocket)
+        public ClientManager(Socket clientSocket, Server s)
         {
             this.clientSocket = clientSocket;
+            this.s = s;
         }
 
         public void doClient()
@@ -30,28 +32,40 @@ namespace Roulette_server
             {
                 // An incoming connection needs to be processed.  
                 //data = "";
-                byte[] msg = Encoding.ASCII.GetBytes("Giro Ruota");
+                byte[] msg = Encoding.ASCII.GetBytes("Giro Ruota$");
                 clientSocket.Send(msg);
-                while (data.IndexOf("$") == -1)
-                {
-                    int bytesRec = clientSocket.Receive(bytes);
-                    data += Encoding.ASCII.GetString(bytes, 0, bytesRec);
-                }
+                int bytesRec = clientSocket.Receive(bytes);
+                data += Encoding.ASCII.GetString(bytes, 0, bytesRec);
                 puntata = JsonSerializer.Deserialize<Dictionary<string, int>>(data);
-                foreach(KeyValuePair<string, int> pair in puntata)
+                foreach (KeyValuePair<string, int> pair in puntata)
                 {
                     MessageBox.Show(pair.ToString());
                 }
+
+
+
                 // Show the data on the console.  
 
                 // Echo the data back to the client.  
-                msg = Encoding.ASCII.GetBytes("End$");
+                string[] stringa = s.Risultato();
+                msg = Encoding.ASCII.GetBytes(stringa[0] + " " + stringa[1] + "$");
                 clientSocket.Send(msg);
+                bytesRec = clientSocket.Receive(bytes);
+                data += Encoding.ASCII.GetString(bytes, 0, bytesRec);
             }
             clientSocket.Shutdown(SocketShutdown.Both);
             clientSocket.Close();
             data = "";
-
+        }
+        public void abilita()
+        {
+            byte[] msg = Encoding.ASCII.GetBytes("Punta$");
+            clientSocket.Send(msg);
+        }
+        public void disabilita()
+        {
+            byte[] msg = Encoding.ASCII.GetBytes("Wait$");
+            clientSocket.Send(msg);
         }
     }
 }
