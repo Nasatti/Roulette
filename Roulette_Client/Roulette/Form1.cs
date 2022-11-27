@@ -12,18 +12,20 @@ using System.Text;
 using System.Threading;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using System.Diagnostics.SymbolStore;
 
 namespace Roulette
 {
     public partial class Client : Form
     {
         int nfish = 0;
-        int f;
+        int f, vincita = 0;
         Dictionary<string, int> puntata = new Dictionary<string, int>();
         byte[] bytes = new byte[1024];
         IPAddress ipAddress;
         IPEndPoint remoteEP;
         Socket sender;
+        bool esci = true;
         public Client()
         {
             CheckForIllegalCrossThreadCalls = false;
@@ -451,73 +453,6 @@ namespace Roulette
             Button_Fish(bfila3, "fila3", e);
         }
 
-        public void StartClient()
-        {
-            // Data buffer for incoming data.  
-            byte[] bytes = new byte[1024];
-
-            // Connect to a remote device.  
-            try
-            {
-                string data = "";
-
-                try
-                {
-
-
-                    string jsonString = JsonSerializer.Serialize(puntata);
-                    while (data != "End$")
-                    {
-                        data = "";
-                        while (data.IndexOf("$") == -1)
-                        {
-                            int bytesRec = sender.Receive(bytes);
-                            data += Encoding.ASCII.GetString(bytes, 0, bytesRec);
-                        }
-                        stato.Text = data.Substring(0, data.Length - 1);
-                        Application.DoEvents();
-                        byte[] msg = Encoding.ASCII.GetBytes(jsonString);
-                        sender.Send(msg);
-                        data = "";
-                        while (data.IndexOf("$") == -1)
-                        {
-                            int bytesRec = sender.Receive(bytes);
-                            data = Encoding.ASCII.GetString(bytes, 0, bytesRec);
-                        }
-                        MessageBox.Show(data);
-                        msg = Encoding.ASCII.GetBytes("End");
-                        sender.Send(msg);
-                    }
-                    // Release the socket.
-                    //sender.Shutdown(SocketShutdown.Both);
-                    //sender.Close();
-                }
-                catch (ArgumentNullException ane)
-                {
-
-                    Console.WriteLine("ArgumentNullException : {0}\nRiprovare l'accesso", ane.ToString());
-                }
-                catch (SocketException se)
-                {
-                    Console.WriteLine("SocketException : {0}\nRiprovare l'accesso", se.ToString());
-                }
-                catch (Exception e)
-                {
-                    Console.WriteLine("Unexpected exception : {0}\nRiprovare l'accesso", e.ToString());
-                }
-
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.ToString());
-            }
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            Thread t = new Thread(new ThreadStart(StartClient));
-            t.Start();
-        }
         private void button3_Click(object senderr, EventArgs ee)
         {
             p_inizio.Visible = false;
@@ -528,6 +463,9 @@ namespace Roulette
 
         private void btn_esci_Click(object senderr, EventArgs e)
         {
+            esci = true;
+            byte[] msg = Encoding.ASCII.GetBytes("End$");
+            sender.Send(msg);
             sender.Shutdown(SocketShutdown.Both);
             sender.Close();
             this.Close();
@@ -543,30 +481,59 @@ namespace Roulette
                     SocketType.Stream, ProtocolType.Tcp);
                 sender.Connect(remoteEP);
                 string data = "";
-                while (data.IndexOf("$") == -1)
+                bool verifica = true;
+                string data_temp = "";
+                while (esci)
                 {
-                    int bytesRec = sender.Receive(bytes);
-                    data = Encoding.ASCII.GetString(bytes, 0, bytesRec);
+                    data = "";
+                    while (data.IndexOf("$") == -1)
+                    {
+                        int bytesRec = sender.Receive(bytes);
+                        data = Encoding.ASCII.GetString(bytes, 0, bytesRec);
+                    }
+                    if (data != data_temp)
+                    {
+                        data_temp = data;
+                        verifica = true;
+                    }
+                    if(data == "Giro Ruota$" && verifica)
+                    {
+                        stato.Text = "Aspetta";
+                        Invia();
+                        verifica = false;
+                    }
+                    else if(data == "Fermo$" && verifica)
+                    {
+                        stato.Text = "Punta";
+                        data = Ricevi();
+                        vincita = int.Parse(data);
+                        verifica = false;
+                        label_ricarica.Text = vincita.ToString();
+                        string[] str = label_ricarica.Text.Split(',');
+                        int n = int.Parse(str[0]);
+                        label_ricarica.Text = (n + vincita).ToString();
+                    }
                 }
-
-                if (data == "Wait$")
-                {
-                    btn_punta.Enabled = false;
-                    Application.DoEvents();
-                    int bytesRec = sender.Receive(bytes);
-                    data = Encoding.ASCII.GetString(bytes, 0, bytesRec);
-                }
-                if (data == "Punta$")
-                    btn_punta.Enabled = true;
-                stato.Text = data.Substring(0, data.Length - 1);
-
             }
             catch (Exception e)
             {
-                MessageBox.Show(e.ToString() + "\nriprova l'accesso");
+                MessageBox.Show("Qualcosa è andato storto\nriprova l'accesso");
+                Console.WriteLine(e.ToString());
                 p_inizio.Visible = true;
                 p_gioco.Visible = false;
             }
+        }
+        public void Invia()
+        {
+            string jsonString = JsonSerializer.Serialize(puntata);
+            byte[] msg = Encoding.ASCII.GetBytes(jsonString);
+            sender.Send(msg);
+        }
+
+        public string Ricevi()
+        {
+            int bytesRec = sender.Receive(bytes);
+            return Encoding.ASCII.GetString(bytes, 0, bytesRec);
         }
     }
 }

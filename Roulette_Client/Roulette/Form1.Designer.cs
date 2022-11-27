@@ -35,7 +35,6 @@ namespace Roulette
             this.label1 = new System.Windows.Forms.Label();
             this.label_ricarica = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
-            this.btn_punta = new System.Windows.Forms.Button();
             this.fish5 = new System.Windows.Forms.PictureBox();
             this.fish10 = new System.Windows.Forms.PictureBox();
             this.fish25 = new System.Windows.Forms.PictureBox();
@@ -173,27 +172,11 @@ namespace Roulette
             this.button1.Location = new System.Drawing.Point(36, 49);
             this.button1.Margin = new System.Windows.Forms.Padding(4);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(109, 33);
+            this.button1.Size = new System.Drawing.Size(109, 49);
             this.button1.TabIndex = 9;
             this.button1.Text = "RICARICA";
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // btn_punta
-            // 
-            this.btn_punta.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.btn_punta.BackColor = System.Drawing.Color.Black;
-            this.btn_punta.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_punta.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_punta.ForeColor = System.Drawing.Color.Gold;
-            this.btn_punta.Location = new System.Drawing.Point(884, 46);
-            this.btn_punta.Margin = new System.Windows.Forms.Padding(4);
-            this.btn_punta.Name = "btn_punta";
-            this.btn_punta.Size = new System.Drawing.Size(105, 53);
-            this.btn_punta.TabIndex = 10;
-            this.btn_punta.Text = "PUNTA";
-            this.btn_punta.UseVisualStyleBackColor = false;
-            this.btn_punta.Click += new System.EventHandler(this.button2_Click);
             // 
             // fish5
             // 
@@ -1143,9 +1126,8 @@ namespace Roulette
             this.stato.ForeColor = System.Drawing.Color.White;
             this.stato.Location = new System.Drawing.Point(512, 10);
             this.stato.Name = "stato";
-            this.stato.Size = new System.Drawing.Size(40, 16);
+            this.stato.Size = new System.Drawing.Size(0, 16);
             this.stato.TabIndex = 19;
-            this.stato.Text = "punta";
             // 
             // p_gioco
             // 
@@ -1159,7 +1141,6 @@ namespace Roulette
             this.p_gioco.Controls.Add(this.stato);
             this.p_gioco.Controls.Add(this.button1);
             this.p_gioco.Controls.Add(this.label2);
-            this.p_gioco.Controls.Add(this.btn_punta);
             this.p_gioco.Controls.Add(this.panel_fish5);
             this.p_gioco.Controls.Add(this.panel_fish1);
             this.p_gioco.Controls.Add(this.panel_fish10);
@@ -1181,10 +1162,10 @@ namespace Roulette
             this.btn_esci.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_esci.Font = new System.Drawing.Font("Palatino Linotype", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_esci.ForeColor = System.Drawing.Color.Gold;
-            this.btn_esci.Location = new System.Drawing.Point(36, 86);
+            this.btn_esci.Location = new System.Drawing.Point(880, 49);
             this.btn_esci.Margin = new System.Windows.Forms.Padding(4);
             this.btn_esci.Name = "btn_esci";
-            this.btn_esci.Size = new System.Drawing.Size(109, 33);
+            this.btn_esci.Size = new System.Drawing.Size(109, 49);
             this.btn_esci.TabIndex = 20;
             this.btn_esci.Text = "ESCI";
             this.btn_esci.UseVisualStyleBackColor = false;
@@ -1306,7 +1287,6 @@ namespace Roulette
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label_ricarica;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button btn_punta;
         private System.Windows.Forms.PictureBox fish5;
         private System.Windows.Forms.PictureBox fish10;
         private System.Windows.Forms.PictureBox fish25;

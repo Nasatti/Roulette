@@ -24,7 +24,7 @@ namespace Roulette_server
         int i = 0;
         Roulette roulette = new Roulette();
         Bitmap bmp;
-        string[] risultato = new string[5];
+        List<string> risultato = new List<string>();
         Thread t;
         bool stato = false;
         IPAddress ipAddress;
@@ -61,12 +61,6 @@ namespace Roulette_server
                 else
                 {
                     stato = true;
-
-
-                    
-
-
-
                     timer_palla.Enabled = false;
                     timer_avvio.Enabled = true;
                     int n = (int)angleToNumber(angle);
@@ -144,41 +138,40 @@ namespace Roulette_server
             return Math.Truncate(n);
         }
 
-        public string[] estrazione(int n, int a)
+        public List<string> estrazione(int n, int a)
         {
-            string[] result = new string[6];
-            result[0] = n.ToString();
+            List<string> result = new List<string>();
+            result.Add(n.ToString());
             //nella metà
             if (n <= 18)
-                result[1] = "1to18";
+                result.Add("1to18");
             else
-                result[1] = "19to36";
+                result.Add("19to36");
 
             //nei 12
             if (n <= 12)
-            if (n <= 12)
-                result[2] = "1st12";
+                result.Add("1st12");
             else if (n <= 24)
-                result[2] = "2nd12";
+                result.Add("2nd12");
             else
-                result[2] = "3rd12";
+                result.Add("3rd12");
 
             //colore
-            result[3] = roulette.number[a].color;
+            result.Add(roulette.number[a].color);
 
             //pari e dispari
             if (n % 2 == 0)
-                result[4] = "even";
+                result.Add("even");
             else
-                result[4] = "odd";
+                result.Add("odd");
 
             //fila
             if (n % 3 == 0)
-                result[5] = "fila3";
+                result.Add("fila3");
             else if ((n + 1) % 3 == 0)
-                result[5] = "fila2";
+                result.Add("fila2");
             else if ((n + 2) % 3 == 0)
-                result[5] = "fila1";
+                result.Add("fila1");
 
             return result;
         }
@@ -213,23 +206,10 @@ namespace Roulette_server
                 Socket handler = listener.Accept();
                 while (true)
                 {
-                    
-                    if (stato)
-                    {
-                        byte[] msg = Encoding.ASCII.GetBytes("Punta$");
-                        handler.Send(msg);
-                        ClientManager clientThread = new ClientManager(handler, this);
-                        Thread t = new Thread(new ThreadStart(clientThread.doClient));
-                        t.Start();
-                        break;
-                    }
-                    else if(i == 0)
-                    {
-                        byte[] msg = Encoding.ASCII.GetBytes("Wait$");
-                        handler.Send(msg);
-                        i++;
-                    }
-                    
+                    ClientManager clientThread = new ClientManager(handler, this);
+                    Thread t = new Thread(new ThreadStart(clientThread.doClient));
+                    t.Start();
+                    break;
                 }
                 //}
             }
@@ -246,9 +226,13 @@ namespace Roulette_server
             btn_avvia.Visible = false;
             timer_palla.Enabled = true;
         }
-        public string[] Risultato()
+        public List<string> Risultato()
         {
             return risultato;
+        }
+        public bool Stato()
+        {
+            return stato;
         }
     }
 }
