@@ -26,6 +26,8 @@ namespace Roulette
         IPEndPoint remoteEP;
         Socket sender;
         bool esci = true;
+        List<Button> button_press = new List<Button>();
+        List<string> number_press = new List<string>();
         public Client()
         {
             CheckForIllegalCrossThreadCalls = false;
@@ -164,6 +166,8 @@ namespace Roulette
                             n -= f;
                             label_ricarica.Text = n.ToString() + ",00€";
                             puntata.Add(s, f);
+                            button_press.Add(b);
+                            number_press.Add(s);
                         }
                         else
                             MessageBox.Show("Conto insufficiente");
@@ -501,6 +505,7 @@ namespace Roulette
                         stato.Text = "Aspetta";
                         Invia();
                         verifica = false;
+                        panel_tavolo.Enabled = false;
                     }
                     else if(data == "Fermo$" && verifica)
                     {
@@ -508,19 +513,29 @@ namespace Roulette
                         data = Ricevi();
                         vincita = int.Parse(data);
                         verifica = false;
-                        label_ricarica.Text = vincita.ToString();
                         string[] str = label_ricarica.Text.Split(',');
                         int n = int.Parse(str[0]);
-                        label_ricarica.Text = (n + vincita).ToString();
+                        label_ricarica.Text = (n + vincita).ToString() + ",00€";
+                        pulizia();
+                        panel_tavolo.Enabled = true; ;
                     }
                 }
             }
             catch (Exception e)
             {
-                MessageBox.Show("Qualcosa è andato storto\nriprova l'accesso");
+                DialogResult d = MessageBox.Show("Qualcosa è andato storto\nriprova l'accesso", "Attention", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 Console.WriteLine(e.ToString());
-                p_inizio.Visible = true;
-                p_gioco.Visible = false;
+                if (d == DialogResult.Yes)
+                {
+                    p_inizio.Visible = true;
+                    p_gioco.Visible = false;
+                }
+                else
+                {
+                    esci = true;
+                    byte[] msg = Encoding.ASCII.GetBytes("End$");
+                    this.Close();
+                }
             }
         }
         public void Invia()
@@ -534,6 +549,17 @@ namespace Roulette
         {
             int bytesRec = sender.Receive(bytes);
             return Encoding.ASCII.GetString(bytes, 0, bytesRec);
+        }
+        public void pulizia()
+        {
+            int i = 0;
+            foreach(Button b in button_press)
+            {
+                b.Text = number_press[i];
+                b.Image = null;
+                i++;
+            }
+            puntata.Clear();
         }
     }
 }

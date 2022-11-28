@@ -54,21 +54,52 @@ namespace Roulette_server
             });
 
         }
-        public int Quota(List<string> n_estratto, List<string> n_giocatore, List<int> quota)
+        public int Vincita(List<string> n_estratto, List<string> n_giocatore, List<int> soldi)
         {
+            int v = 0;
+            int i = 0;
             int q = 0;
-            int i;
+            List<int> Temp = new List<int>();
             foreach (string g in n_giocatore)
             {
-                i = 0;
+                q = 0;
                 foreach (string n in n_estratto)
                 {
                     if (g == n)
                     {
-                        MessageBox.Show("WIN");
+                        v = soldi[i] * quota(q);
                     }
-                    i++;
+                    q++;
                 }
+                i++;
+            }
+
+            return v;
+        }
+
+        public int quota(int i)
+        {
+            int q = 0;
+            switch (i)
+            {
+                case 0:
+                    q = 36;
+                    break;
+                case 1:
+                    q = 2;
+                    break;
+                case 2:
+                    q = 3;
+                    break;
+                case 3:
+                    q = 2;
+                    break;
+                case 4:
+                    q = 2;
+                    break;
+                case 5:
+                    q = 3;
+                    break;
             }
             return q;
         }

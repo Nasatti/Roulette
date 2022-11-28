@@ -32,16 +32,18 @@ namespace Roulette_server
             Dictionary<string, int> puntata = new Dictionary<string, int>();
             int vincita = 0;
             List<string> n_estratto = new List<string>();
-            bool verifica = true;
+            bool verifica1 = true;
+            bool verifica2 = true;
             bool stato;
             try
             {
+                byte[] msg;
                 while (data != "End$")
                 {
                     stato = s.Stato();
-                    if (stato)//fermo
+                    if (stato && verifica2)//fermo
                     {
-                        byte[] msg = Encoding.ASCII.GetBytes("Fermo$");
+                        msg = Encoding.ASCII.GetBytes("Fermo$");
                         clientSocket.Send(msg);
 
                         List<string> r = new List<string>();
@@ -50,18 +52,19 @@ namespace Roulette_server
                         {
                             string check1 = pair.ToString();
                             string[] check2 = check1.Split(',');
-                            r.Append(check2[0].Substring(1));
-                            q.Append(int.Parse(check2[1].Substring(0, check2[1].Length - 1)));
+                            r.Add(check2[0].Substring(1));
+                            q.Add(int.Parse(check2[1].Substring(0, check2[1].Length - 1)));
                         }
-                        vincita = roulette.Quota(n_estratto, r, q);
+                        vincita = roulette.Vincita(n_estratto, r, q);
                         msg = Encoding.ASCII.GetBytes(vincita.ToString());
                         Thread.Sleep(100);
                         clientSocket.Send(msg);
-                        verifica = true;
+                        verifica1 = true;
+                        verifica2 = false;
                     }
-                    else if (verifica)//giro ruota
+                    else if (!stato && verifica1)//giro ruota
                     {
-                        byte[] msg = Encoding.ASCII.GetBytes("Giro Ruota$");
+                        msg = Encoding.ASCII.GetBytes("Giro Ruota$");
                         clientSocket.Send(msg);
 
                         int bytesRec = clientSocket.Receive(bytes);
@@ -69,7 +72,8 @@ namespace Roulette_server
                         if (data != "{}")
                             puntata = JsonSerializer.Deserialize<Dictionary<string, int>>(data);
                         n_estratto = s.Risultato();
-                        verifica = false;
+                        verifica1 = false;
+                        verifica2 = true;
                     }
 
                 }
