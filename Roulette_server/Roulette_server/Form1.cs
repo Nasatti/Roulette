@@ -26,11 +26,9 @@ namespace Roulette_server
         Bitmap bmp;
         List<string> risultato = new List<string>();
         Thread t;
-        bool stato = false;
-        IPAddress ipAddress;
-        IPEndPoint localEndPoint; 
-        Socket listener;
-
+        bool stato = false; bool inizio = true;
+        int count = 20;
+        int[] n = new int[2] { 0, 0 };
         public static string data = null;
         public Server()
         {
@@ -45,6 +43,25 @@ namespace Roulette_server
             angle += 9.729f;
 
             Invalidate();
+
+            if (!inizio)
+            {
+                if (roulette.number[n[1]].color == "green")
+                {
+                    panel_nestratto.BackColor = Color.LimeGreen;
+                }
+                else if (roulette.number[n[1]].color == "red")
+                {
+                    panel_nestratto.BackColor = Color.Red;
+                }
+                else if (roulette.number[n[1]].color == "black")
+                {
+                    panel_nestratto.BackColor = Color.Black;
+                }
+                label_nestratto.Visible = true;
+                panel_nestratto.Visible = true;
+                label_n.Text = roulette.number[n[1]].n.ToString();
+            }
 
             i++;
             Random r = new Random();
@@ -63,29 +80,33 @@ namespace Roulette_server
                     stato = true;
                     timer_palla.Enabled = false;
                     timer_avvio.Enabled = true;
-                    int n = (int)angleToNumber(angle);
-                    if (n == 37)
-                        n = 0;
-                    if (roulette.number[n].color == "green")
+                    count = 20;
+                    label_timer.Text = count.ToString() + " secondi";
+                    label_t.Visible = true;
+                    label_timer.Visible = true;
+                    n[0] = (int)angleToNumber(angle);
+                    n[1] = n[0];
+                    if (n[0] == 37)
+                        n[0] = 0;
+                    if (roulette.number[n[0]].color == "green")
                     {
                         p_number.Image = color.Images[2];
                         num.BackColor = Color.LimeGreen;
                     }
-                    else if (roulette.number[n].color == "red")
+                    else if (roulette.number[n[0]].color == "red")
                     {
                         p_number.Image = color.Images[0];
                         num.BackColor = Color.Red;
                     }
-                    else if (roulette.number[n].color == "black")
+                    else if (roulette.number[n[0]].color == "black")
                     {
                         p_number.Image = color.Images[1];
                         num.BackColor = Color.Black;
                     }
-                    num.Text = roulette.number[n].n.ToString();
+                    num.Text = roulette.number[n[0]].n.ToString();
                     p_number.Visible = true;
                     num.Visible = true;
-                    risultato = estrazione(roulette.number[n].n, n);
-
+                    risultato = estrazione(roulette.number[n[0]].n, n[0]);
                 }
             }
         }
@@ -121,14 +142,25 @@ namespace Roulette_server
 
         private void timer_velocità_Tick(object sender, EventArgs e)
         {
-            int n = r.Next(0, 37);
-            angle = n * 9.729f;
-            timer_palla.Interval = 50;
-            timer_palla.Enabled = true;
-            stato = false;
-            timer_avvio.Enabled = false;
-            p_number.Visible = false;
-            num.Visible = false;
+            if (count >= 0)
+            {
+                label_timer.Text = count.ToString() + " secondi";
+            }
+            else
+            {
+                inizio = false;
+                int rr = r.Next(0, 37);
+                angle = rr * 9.729f;
+                timer_palla.Interval = 50;
+                timer_palla.Enabled = true;
+                stato = false;
+                timer_avvio.Enabled = false;
+                p_number.Visible = false;
+                num.Visible = false;
+                label_timer.Visible = false;
+                label_t.Visible = false;
+            }
+            count--;
         }
         private double angleToNumber(float angle)
         {
@@ -178,47 +210,27 @@ namespace Roulette_server
 
         public void StartServer()
         {
-            // Establish the local endpoint for the socket.  
-            // Dns.GetHostName returns the name of the   
-            // host running the application.  
-            ipAddress = System.Net.IPAddress.Parse("127.0.0.1");
-            localEndPoint = new IPEndPoint(ipAddress, 5000);
-
-            // Create a TCP/IP socket.  
-            listener = new Socket(ipAddress.AddressFamily,
+            IPAddress ipAddress = System.Net.IPAddress.Parse("127.0.0.1");
+            IPEndPoint localEndPoint = new IPEndPoint(ipAddress, 5000);
+            Socket listener = new Socket(ipAddress.AddressFamily,
                 SocketType.Stream, ProtocolType.Tcp);
-
-
-            // Bind the socket to the local endpoint and   
-            // listen for incoming connections.  
             try
             {
                 listener.Bind(localEndPoint);
                 listener.Listen(10);
-
-                // Start listening for connections.  
-
-                //while (true)
-                //{
-
-                // Program is suspended while waiting for an incoming connection.
-                int i = 0;
-                Socket handler = listener.Accept();
                 while (true)
                 {
+                    Socket handler = listener.Accept();
                     ClientManager clientThread = new ClientManager(handler, this);
                     Thread t = new Thread(new ThreadStart(clientThread.doClient));
                     t.Start();
-                    break;
                 }
-                //}
             }
             catch (Exception e)
             {
                 Console.WriteLine(e.ToString());
             }
         }
-
         private void btn_avvia_Click(object sender, EventArgs e)
         {
             t = new Thread(new ThreadStart(StartServer));

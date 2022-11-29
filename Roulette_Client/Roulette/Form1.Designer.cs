@@ -990,7 +990,7 @@ namespace Roulette
             this.bred.Name = "bred";
             this.bred.Size = new System.Drawing.Size(115, 57);
             this.bred.TabIndex = 50;
-            this.bred.Text = "RED";
+            this.bred.Text = "red";
             this.bred.UseVisualStyleBackColor = false;
             this.bred.MouseDown += new System.Windows.Forms.MouseEventHandler(this.bred_MouseDown);
             // 
@@ -1005,7 +1005,7 @@ namespace Roulette
             this.bblack.Name = "bblack";
             this.bblack.Size = new System.Drawing.Size(115, 57);
             this.bblack.TabIndex = 51;
-            this.bblack.Text = "BLACK";
+            this.bblack.Text = "black";
             this.bblack.UseVisualStyleBackColor = false;
             this.bblack.MouseDown += new System.Windows.Forms.MouseEventHandler(this.bblack_MouseDown);
             // 
@@ -1020,7 +1020,7 @@ namespace Roulette
             this.beven.Name = "beven";
             this.beven.Size = new System.Drawing.Size(115, 57);
             this.beven.TabIndex = 52;
-            this.beven.Text = "EVEN";
+            this.beven.Text = "even";
             this.beven.UseVisualStyleBackColor = false;
             this.beven.MouseDown += new System.Windows.Forms.MouseEventHandler(this.beven_MouseDown);
             // 
@@ -1035,7 +1035,7 @@ namespace Roulette
             this.bodd.Name = "bodd";
             this.bodd.Size = new System.Drawing.Size(115, 57);
             this.bodd.TabIndex = 53;
-            this.bodd.Text = "ODD";
+            this.bodd.Text = "odd";
             this.bodd.UseVisualStyleBackColor = false;
             this.bodd.MouseDown += new System.Windows.Forms.MouseEventHandler(this.bodd_MouseDown);
             // 
@@ -1255,8 +1255,7 @@ namespace Roulette
             this.Controls.Add(this.p_gioco);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
-            this.MaximumSize = new System.Drawing.Size(1041, 525);
-            this.MinimumSize = new System.Drawing.Size(978, 443);
+            this.MinimumSize = new System.Drawing.Size(1041, 525);
             this.Name = "Client";
             this.Text = "Client";
             this.Load += new System.EventHandler(this.Client_Load);

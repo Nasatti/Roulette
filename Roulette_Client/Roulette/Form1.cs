@@ -25,7 +25,7 @@ namespace Roulette
         IPAddress ipAddress;
         IPEndPoint remoteEP;
         Socket sender;
-        bool esci = true;
+        bool esci = true; bool inizio = true;
         List<Button> button_press = new List<Button>();
         List<string> number_press = new List<string>();
         public Client()
@@ -520,21 +520,26 @@ namespace Roulette
                         panel_tavolo.Enabled = true; ;
                     }
                 }
+                inizio = false;
             }
             catch (Exception e)
             {
-                DialogResult d = MessageBox.Show("Qualcosa è andato storto\nriprova l'accesso", "Attention", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 Console.WriteLine(e.ToString());
-                if (d == DialogResult.Yes)
+                if (inizio)
                 {
-                    p_inizio.Visible = true;
-                    p_gioco.Visible = false;
-                }
-                else
-                {
-                    esci = true;
-                    byte[] msg = Encoding.ASCII.GetBytes("End$");
-                    this.Close();
+                    DialogResult d = MessageBox.Show("Qualcosa è andato storto\nriprova l'accesso", "Attention", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                    inizio = false;
+                    if (d == DialogResult.Yes)
+                    {
+                        p_inizio.Visible = true;
+                        p_gioco.Visible = false;
+                    }
+                    else
+                    {
+                        esci = true;
+                        byte[] msg = Encoding.ASCII.GetBytes("End$");
+                        this.Close();
+                    }
                 }
             }
         }

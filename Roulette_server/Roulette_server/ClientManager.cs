@@ -61,6 +61,7 @@ namespace Roulette_server
                         clientSocket.Send(msg);
                         verifica1 = true;
                         verifica2 = false;
+                        puntata.Clear();
                     }
                     else if (!stato && verifica1)//giro ruota
                     {
