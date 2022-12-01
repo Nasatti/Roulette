@@ -484,10 +484,11 @@ namespace Roulette
                 sender = new Socket(ipAddress.AddressFamily,
                     SocketType.Stream, ProtocolType.Tcp);
                 sender.Connect(remoteEP);
+                inizio = false;
                 string data = "";
                 bool verifica = true;
                 string data_temp = "";
-                while (esci)
+                while (esci && data != "End$")
                 {
                     data = "";
                     while (data.IndexOf("$") == -1)
@@ -495,32 +496,52 @@ namespace Roulette
                         int bytesRec = sender.Receive(bytes);
                         data = Encoding.ASCII.GetString(bytes, 0, bytesRec);
                     }
-                    if (data != data_temp)
+                    if (data != "End$")
                     {
-                        data_temp = data;
-                        verifica = true;
-                    }
-                    if(data == "Giro Ruota$" && verifica)
-                    {
-                        stato.Text = "Aspetta";
-                        Invia();
-                        verifica = false;
-                        panel_tavolo.Enabled = false;
-                    }
-                    else if(data == "Fermo$" && verifica)
-                    {
-                        stato.Text = "Punta";
-                        data = Ricevi();
-                        vincita = int.Parse(data);
-                        verifica = false;
-                        string[] str = label_ricarica.Text.Split(',');
-                        int n = int.Parse(str[0]);
-                        label_ricarica.Text = (n + vincita).ToString() + ",00€";
-                        pulizia();
-                        panel_tavolo.Enabled = true; ;
+                        if (data != data_temp)
+                        {
+                            data_temp = data;
+                            verifica = true;
+                        }
+                        if (data == "Giro Ruota$" && verifica)
+                        {
+                            stato.Text = "Aspetta";
+                            Invia();
+                            verifica = false;
+                            panel_tavolo.Enabled = false;
+                        }
+                        else if (data == "Fermo$" && verifica)
+                        {
+                            stato.Text = "Punta";
+                            data = Ricevi();
+                            if (data != "End$")
+                            {
+                                vincita = int.Parse(data);
+                                verifica = false;
+                                string[] str = label_ricarica.Text.Split(',');
+                                int n = int.Parse(str[0]);
+                                label_ricarica.Text = (n + vincita).ToString() + ",00€";
+                                pulizia();
+                                panel_tavolo.Enabled = true;
+                            }
+                        }
                     }
                 }
-                inizio = false;
+                sender.Shutdown(SocketShutdown.Both);
+                sender.Close();
+                DialogResult d = MessageBox.Show("Server spento\nAttendi che riparta", "Attention", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (d == DialogResult.Yes)
+                {
+                    p_inizio.Visible = true;
+                    p_gioco.Visible = false;
+                    pulizia();
+                }
+                else
+                {
+                    esci = true;
+                    byte[] msg = Encoding.ASCII.GetBytes("End$");
+                    this.Close();
+                }
             }
             catch (Exception e)
             {
@@ -528,7 +549,6 @@ namespace Roulette
                 if (inizio)
                 {
                     DialogResult d = MessageBox.Show("Qualcosa è andato storto\nriprova l'accesso", "Attention", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                    inizio = false;
                     if (d == DialogResult.Yes)
                     {
                         p_inizio.Visible = true;

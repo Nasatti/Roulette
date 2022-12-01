@@ -96,7 +96,7 @@
             this.btn_avvia.Font = new System.Drawing.Font("Palatino Linotype", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_avvia.ForeColor = System.Drawing.Color.Gold;
             this.btn_avvia.Location = new System.Drawing.Point(527, 578);
-            this.btn_avvia.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btn_avvia.Margin = new System.Windows.Forms.Padding(4);
             this.btn_avvia.Name = "btn_avvia";
             this.btn_avvia.Size = new System.Drawing.Size(116, 34);
             this.btn_avvia.TabIndex = 10;
@@ -183,6 +183,7 @@
             this.MinimumSize = new System.Drawing.Size(674, 671);
             this.Name = "Server";
             this.Text = "Server";
+            this.TopMost = true;
             this.Load += new System.EventHandler(this.Server_Load);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.Server_Paint);
             this.Resize += new System.EventHandler(this.Server_Resize);

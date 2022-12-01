@@ -40,43 +40,57 @@ namespace Roulette_server
                 byte[] msg;
                 while (data != "End$")
                 {
-                    stato = s.Stato();
-                    if (stato && verifica2)//fermo
+                    msg = null;
+                    if (!s.AvvioSpegni())
                     {
-                        msg = Encoding.ASCII.GetBytes("Fermo$");
-                        clientSocket.Send(msg);
-
-                        List<string> r = new List<string>();
-                        List<int> q = new List<int>();
-                        foreach (KeyValuePair<string, int> pair in puntata)
+                        stato = s.Stato();
+                        if (stato && verifica2)//fermo
                         {
-                            string check1 = pair.ToString();
-                            string[] check2 = check1.Split(',');
-                            r.Add(check2[0].Substring(1));
-                            q.Add(int.Parse(check2[1].Substring(0, check2[1].Length - 1)));
+                            msg = Encoding.ASCII.GetBytes("Fermo$");
+                            clientSocket.Send(msg);
+
+                            List<string> r = new List<string>();
+                            List<int> q = new List<int>();
+                            foreach (KeyValuePair<string, int> pair in puntata)
+                            {
+                                string check1 = pair.ToString();
+                                string[] check2 = check1.Split(',');
+                                r.Add(check2[0].Substring(1));
+                                q.Add(int.Parse(check2[1].Substring(0, check2[1].Length - 1)));
+                            }
+                            n_estratto = s.Risultato();
+                            vincita = roulette.Vincita(n_estratto, r, q);
+                            msg = Encoding.ASCII.GetBytes(vincita.ToString());
+                            Thread.Sleep(100);
+                            clientSocket.Send(msg);
+                            verifica1 = true;
+                            verifica2 = false;
+                            puntata.Clear();
                         }
-                        vincita = roulette.Vincita(n_estratto, r, q);
-                        msg = Encoding.ASCII.GetBytes(vincita.ToString());
-                        Thread.Sleep(100);
-                        clientSocket.Send(msg);
-                        verifica1 = true;
-                        verifica2 = false;
-                        puntata.Clear();
+                        else if (!stato && verifica1)//giro ruota
+                        {
+                            msg = Encoding.ASCII.GetBytes("Giro Ruota$");
+                            clientSocket.Send(msg);
+
+                            int bytesRec = clientSocket.Receive(bytes);
+                            data = Encoding.ASCII.GetString(bytes, 0, bytesRec);
+                            if (data != "End$")
+                            {
+                                if (data != "{}")
+                                    puntata = JsonSerializer.Deserialize<Dictionary<string, int>>(data);
+                                
+                                verifica1 = false;
+                                verifica2 = true;
+                            }
+                        }
+
                     }
-                    else if (!stato && verifica1)//giro ruota
+                    else
                     {
-                        msg = Encoding.ASCII.GetBytes("Giro Ruota$");
+                        msg = Encoding.ASCII.GetBytes("End$");
                         clientSocket.Send(msg);
-
-                        int bytesRec = clientSocket.Receive(bytes);
-                        data = Encoding.ASCII.GetString(bytes, 0, bytesRec);
-                        if (data != "{}")
-                            puntata = JsonSerializer.Deserialize<Dictionary<string, int>>(data);
-                        n_estratto = s.Risultato();
-                        verifica1 = false;
-                        verifica2 = true;
+                        data="End$";
                     }
-
                 }
                 clientSocket.Shutdown(SocketShutdown.Both);
                 clientSocket.Close();

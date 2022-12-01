@@ -77,7 +77,7 @@ namespace Roulette_server
             return v;
         }
 
-        public int quota(int i)
+        private int quota(int i)
         {
             int q = 0;
             switch (i)

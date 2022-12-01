@@ -26,7 +26,7 @@ namespace Roulette_server
         Bitmap bmp;
         List<string> risultato = new List<string>();
         Thread t;
-        bool stato = false; bool inizio = true;
+        bool stato = false; bool inizio = true; bool avvia = true;
         int count = 20;
         int[] n = new int[2] { 0, 0 };
         public static string data = null;
@@ -77,7 +77,7 @@ namespace Roulette_server
                 }
                 else
                 {
-                    stato = true;
+                    
                     timer_palla.Enabled = false;
                     timer_avvio.Enabled = true;
                     count = 20;
@@ -107,6 +107,7 @@ namespace Roulette_server
                     p_number.Visible = true;
                     num.Visible = true;
                     risultato = estrazione(roulette.number[n[0]].n, n[0]);
+                    stato = true;
                 }
             }
         }
@@ -233,10 +234,29 @@ namespace Roulette_server
         }
         private void btn_avvia_Click(object sender, EventArgs e)
         {
-            t = new Thread(new ThreadStart(StartServer));
-            t.Start();
-            btn_avvia.Visible = false;
-            timer_palla.Enabled = true;
+            if (avvia)
+            {
+                t = new Thread(new ThreadStart(StartServer));
+                t.Start();
+                timer_palla.Enabled = true;
+                avvia = false;
+                btn_avvia.Text = "SPEGNI";
+            }
+            else
+            {
+                timer_palla.Interval = 50;
+                timer_avvio.Interval = 1000;
+                timer_palla.Enabled = false;
+                timer_avvio.Enabled = false;
+                p_number.Visible = false;
+                num.Visible = false;
+                label_t.Visible = false;
+                label_timer.Visible = false;
+                label_nestratto.Visible = false;
+                panel_nestratto.Visible = false;
+                btn_avvia.Text = "AVVIA";
+                avvia = true;
+            }
         }
         public List<string> Risultato()
         {
@@ -245,6 +265,10 @@ namespace Roulette_server
         public bool Stato()
         {
             return stato;
+        }
+        public bool AvvioSpegni()
+        {
+            return avvia;
         }
     }
 }
