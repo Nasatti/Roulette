@@ -4,9 +4,9 @@ Il titolo è autoesplicativo, si tratta di una roulette dove puoi puntare su ci�
 Se indovini vinci:trophy: altrimenti perdi:x:
 
  ## Funzionamento:paperclip:
- - Ci si connette al server 
+ - Ci si connette al server quando acceso
  - Si decide su cosa puntare(spiegazione in seguito) e quanto puntare
- - Ogni 30 secondi la ruota gira 
+ - Ogni 20 secondi la ruota gira 
  - Se vinci quello che viene puntato viene moltiplicato per la quota, mentre se perdi vengono sottratti i soldi puntati
  
  ## Regole:book:
@@ -14,6 +14,7 @@ Se indovini vinci:trophy: altrimenti perdi:x:
  - Le fish si suddividono in 1€, 5€, 10€, 25€, 50€, 100€.
  - Si può scommettere solo quando la roulette è ferma. Se sta girando aspetti
  - Numeri vanno da 0 a 36
+ - Si può giocare solo una fish su ogni puntata opzione di puntata
 
  ##  Puntate:slot_machine:
  - Numero: scegli un numero
@@ -33,6 +34,6 @@ Se indovini vinci:trophy: altrimenti perdi:x:
 
 ## ATTENZIONE:warning:
 
-Lo 0 è verde, non è né pari né dispari e non fa parte di nessuna metà e nemmeno di nessun terzo,
+Lo 0 è verde, non è né pari né dispari, non fa parte di nessuna metà e nemmeno di nessun terzo,
 
 perciò se uscisse e non l'avessi puntato, HAI PERSO:)
