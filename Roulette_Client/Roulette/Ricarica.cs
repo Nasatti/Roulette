@@ -13,10 +13,12 @@ namespace Roulette
     public partial class Ricarica : Form
     {
         Client client;
-        public Ricarica(Client c)
+        int n;
+        public Ricarica(Client c, int n)
         {
             InitializeComponent();
             client = c;
+            this.n = n;
         }
 
         private void trackBar1_Scroll(object sender, EventArgs e)
@@ -40,6 +42,16 @@ namespace Roulette
                 MessageBox.Show("Importo massimo permesso è di 500");
                 text_ricarica.Text = "1";
             }
+        }
+
+        private void Ricarica_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            client.NRicm();
+        }
+
+        private void Ricarica_Load(object sender, EventArgs e)
+        {
+            client.NRicp();
         }
     }
 }

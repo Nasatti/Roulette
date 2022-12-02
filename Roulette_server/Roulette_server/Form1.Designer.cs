@@ -41,6 +41,7 @@
             this.panel_nestratto = new System.Windows.Forms.Panel();
             this.label_n = new System.Windows.Forms.Label();
             this.label_nestratto = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.p_number)).BeginInit();
             this.panel_nestratto.SuspendLayout();
             this.SuspendLayout();
@@ -59,11 +60,11 @@
             // 
             this.num.AutoSize = true;
             this.num.BackColor = System.Drawing.Color.Transparent;
-            this.num.Font = new System.Drawing.Font("Microsoft YaHei", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.num.Font = new System.Drawing.Font("Microsoft YaHei", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.num.ForeColor = System.Drawing.Color.White;
-            this.num.Location = new System.Drawing.Point(311, 278);
+            this.num.Location = new System.Drawing.Point(303, 277);
             this.num.Name = "num";
-            this.num.Size = new System.Drawing.Size(42, 31);
+            this.num.Size = new System.Drawing.Size(51, 37);
             this.num.TabIndex = 0;
             this.num.Text = "11";
             this.num.Visible = false;
@@ -71,10 +72,10 @@
             // p_number
             // 
             this.p_number.BackColor = System.Drawing.Color.Transparent;
-            this.p_number.Location = new System.Drawing.Point(179, 164);
+            this.p_number.Location = new System.Drawing.Point(207, 192);
             this.p_number.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.p_number.Name = "p_number";
-            this.p_number.Size = new System.Drawing.Size(300, 300);
+            this.p_number.Size = new System.Drawing.Size(243, 241);
             this.p_number.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.p_number.TabIndex = 1;
             this.p_number.TabStop = false;
@@ -95,7 +96,7 @@
             this.btn_avvia.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_avvia.Font = new System.Drawing.Font("Palatino Linotype", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_avvia.ForeColor = System.Drawing.Color.Gold;
-            this.btn_avvia.Location = new System.Drawing.Point(527, 578);
+            this.btn_avvia.Location = new System.Drawing.Point(528, 580);
             this.btn_avvia.Margin = new System.Windows.Forms.Padding(4);
             this.btn_avvia.Name = "btn_avvia";
             this.btn_avvia.Size = new System.Drawing.Size(116, 34);
@@ -162,6 +163,22 @@
             this.label_nestratto.Text = "Ultimo numero estratto:";
             this.label_nestratto.Visible = false;
             // 
+            // button1
+            // 
+            this.button1.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.button1.BackColor = System.Drawing.Color.Red;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Palatino Linotype", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.Color.Gold;
+            this.button1.Location = new System.Drawing.Point(609, 537);
+            this.button1.Margin = new System.Windows.Forms.Padding(4);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(35, 35);
+            this.button1.TabIndex = 15;
+            this.button1.Text = "X";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // Server
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -170,6 +187,8 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(656, 624);
+            this.ControlBox = false;
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.label_nestratto);
             this.Controls.Add(this.panel_nestratto);
             this.Controls.Add(this.label_timer);
@@ -183,7 +202,6 @@
             this.MinimumSize = new System.Drawing.Size(674, 671);
             this.Name = "Server";
             this.Text = "Server";
-            this.TopMost = true;
             this.Load += new System.EventHandler(this.Server_Load);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.Server_Paint);
             this.Resize += new System.EventHandler(this.Server_Resize);
@@ -207,6 +225,7 @@
         private System.Windows.Forms.Panel panel_nestratto;
         private System.Windows.Forms.Label label_n;
         private System.Windows.Forms.Label label_nestratto;
+        private System.Windows.Forms.Button button1;
     }
 }
 

@@ -26,7 +26,6 @@ namespace Roulette_server
             this.clientSocket = clientSocket;
             this.s = s;
         }
-
         public void doClient()
         {
             Dictionary<string, int> puntata = new Dictionary<string, int>();
@@ -48,7 +47,6 @@ namespace Roulette_server
                         {
                             msg = Encoding.ASCII.GetBytes("Fermo$");
                             clientSocket.Send(msg);
-
                             List<string> r = new List<string>();
                             List<int> q = new List<int>();
                             foreach (KeyValuePair<string, int> pair in puntata)
@@ -83,7 +81,6 @@ namespace Roulette_server
                                 verifica2 = true;
                             }
                         }
-
                     }
                     else
                     {

@@ -52,7 +52,6 @@ namespace Roulette_server
                 new Number(3,"red"),
                 new Number(26,"black"),
             });
-
         }
         public int Vincita(List<string> n_estratto, List<string> n_giocatore, List<int> soldi)
         {
@@ -67,16 +66,14 @@ namespace Roulette_server
                 {
                     if (g == n)
                     {
-                        v = soldi[i] * quota(q);
+                        v += soldi[i] * quota(q);
                     }
                     q++;
                 }
                 i++;
             }
-
             return v;
         }
-
         private int quota(int i)
         {
             int q = 0;

@@ -11,11 +11,10 @@ using System.Drawing.Drawing2D;
 using System.Threading;
 using System.Net;
 using System.Net.Sockets;
+using System.Threading.Tasks;
 
 namespace Roulette_server
 {
-
-    //odd dispari   even pari
     public partial class Server : Form
     {
         Image img;
@@ -26,7 +25,7 @@ namespace Roulette_server
         Bitmap bmp;
         List<string> risultato = new List<string>();
         Thread t;
-        bool stato = false; bool inizio = true; bool avvia = true;
+        bool stato = false; bool inizio = true; bool avvia = true; bool spegni = false;
         int count = 20;
         int[] n = new int[2] { 0, 0 };
         public static string data = null;
@@ -36,16 +35,15 @@ namespace Roulette_server
             InitializeComponent();
             this.DoubleBuffered = true;
         }
-
-        private void timer_palla_Tick(object sender, EventArgs e)
+        private void timer_palla_Tick(object sender, EventArgs ee)
         {
             angle = angle % 359.973f;
             angle += 9.729f;
-
             Invalidate();
-
             if (!inizio)
             {
+                if (n[1] == 37)
+                    n[1] = 0;
                 if (roulette.number[n[1]].color == "green")
                 {
                     panel_nestratto.BackColor = Color.LimeGreen;
@@ -62,7 +60,6 @@ namespace Roulette_server
                 panel_nestratto.Visible = true;
                 label_n.Text = roulette.number[n[1]].n.ToString();
             }
-
             i++;
             Random r = new Random();
             if (i >= r.Next(30, 50))
@@ -77,7 +74,6 @@ namespace Roulette_server
                 }
                 else
                 {
-                    
                     timer_palla.Enabled = false;
                     timer_avvio.Enabled = true;
                     count = 20;
@@ -111,8 +107,6 @@ namespace Roulette_server
                 }
             }
         }
-
-
         private void Server_Load(object sender, EventArgs e)
         {
             img = Image.FromFile(@"../../img/palla.png");
@@ -120,8 +114,6 @@ namespace Roulette_server
             angle = n * 9.729f;
             bmp = new Bitmap(img.Width, img.Height);
         }
-
-
         private void Server_Paint(object sender, PaintEventArgs e)
         {
             Graphics g = Graphics.FromImage(bmp);
@@ -130,17 +122,14 @@ namespace Roulette_server
             g.RotateTransform(angle);
             g.TranslateTransform(-bmp.Width / 2, -bmp.Height / 2);
             g.InterpolationMode = InterpolationMode.HighQualityBicubic;
-
             g.DrawImage(img, 0, 0);
             e.Graphics.TranslateTransform(this.Width / 2, this.Width / 2);
             e.Graphics.DrawImage(bmp, -bmp.Width / 2 - 9, -bmp.Height / 2);
         }
-
         private void Server_Resize(object sender, EventArgs e)
         {
             Invalidate();
         }
-
         private void timer_velocità_Tick(object sender, EventArgs e)
         {
             if (count >= 0)
@@ -170,7 +159,6 @@ namespace Roulette_server
             n = a / 9.729;
             return Math.Truncate(n);
         }
-
         public List<string> estrazione(int n, int a)
         {
             List<string> result = new List<string>();
@@ -180,7 +168,6 @@ namespace Roulette_server
                 result.Add("1to18");
             else
                 result.Add("19to36");
-
             //nei 12
             if (n <= 12)
                 result.Add("1st12");
@@ -188,16 +175,13 @@ namespace Roulette_server
                 result.Add("2nd12");
             else
                 result.Add("3rd12");
-
             //colore
             result.Add(roulette.number[a].color);
-
             //pari e dispari
             if (n % 2 == 0)
                 result.Add("even");
             else
                 result.Add("odd");
-
             //fila
             if (n % 3 == 0)
                 result.Add("fila3");
@@ -205,7 +189,6 @@ namespace Roulette_server
                 result.Add("fila2");
             else if ((n + 2) % 3 == 0)
                 result.Add("fila1");
-
             return result;
         }
 
@@ -240,7 +223,7 @@ namespace Roulette_server
                 t.Start();
                 timer_palla.Enabled = true;
                 avvia = false;
-                btn_avvia.Text = "SPEGNI";
+                btn_avvia.Text = "PAUSA";
             }
             else
             {
@@ -269,6 +252,18 @@ namespace Roulette_server
         public bool AvvioSpegni()
         {
             return avvia;
+        }
+        public bool Spegni()
+        {
+            return spegni;
+        }
+        private void button1_Click(object sender, EventArgs e)
+        {
+            timer_palla.Enabled = false;
+            timer_avvio.Enabled = false;
+            avvia = true;
+            spegni = true;
+            this.Close();
         }
     }
 }

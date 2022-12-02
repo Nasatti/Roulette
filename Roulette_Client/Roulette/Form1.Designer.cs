@@ -100,6 +100,7 @@ namespace Roulette
             this.label2 = new System.Windows.Forms.Label();
             this.stato = new System.Windows.Forms.Label();
             this.p_gioco = new System.Windows.Forms.Panel();
+            this.l_vincita = new System.Windows.Forms.Label();
             this.btn_esci = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -142,11 +143,12 @@ namespace Roulette
             // 
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label1.AutoSize = true;
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(36, 14);
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.Gold;
+            this.label1.Location = new System.Drawing.Point(33, 9);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(103, 16);
+            this.label1.Size = new System.Drawing.Size(116, 18);
             this.label1.TabIndex = 7;
             this.label1.Text = "Importo residuo:";
             // 
@@ -154,11 +156,12 @@ namespace Roulette
             // 
             this.label_ricarica.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label_ricarica.AutoSize = true;
-            this.label_ricarica.ForeColor = System.Drawing.Color.White;
-            this.label_ricarica.Location = new System.Drawing.Point(36, 30);
+            this.label_ricarica.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_ricarica.ForeColor = System.Drawing.Color.Gold;
+            this.label_ricarica.Location = new System.Drawing.Point(32, 27);
             this.label_ricarica.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_ricarica.Name = "label_ricarica";
-            this.label_ricarica.Size = new System.Drawing.Size(52, 16);
+            this.label_ricarica.Size = new System.Drawing.Size(75, 22);
             this.label_ricarica.TabIndex = 8;
             this.label_ricarica.Text = "100,00€";
             // 
@@ -169,7 +172,7 @@ namespace Roulette
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Palatino Linotype", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.Color.Gold;
-            this.button1.Location = new System.Drawing.Point(36, 49);
+            this.button1.Location = new System.Drawing.Point(36, 53);
             this.button1.Margin = new System.Windows.Forms.Padding(4);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(109, 49);
@@ -1112,21 +1115,25 @@ namespace Roulette
             // 
             // label2
             // 
+            this.label2.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label2.AutoSize = true;
-            this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(432, 10);
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.Gold;
+            this.label2.Location = new System.Drawing.Point(421, 9);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(76, 16);
+            this.label2.Size = new System.Drawing.Size(86, 18);
             this.label2.TabIndex = 18;
             this.label2.Text = "stato gioco:";
             // 
             // stato
             // 
+            this.stato.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.stato.AutoSize = true;
-            this.stato.ForeColor = System.Drawing.Color.White;
+            this.stato.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.stato.ForeColor = System.Drawing.Color.Gold;
             this.stato.Location = new System.Drawing.Point(512, 10);
             this.stato.Name = "stato";
-            this.stato.Size = new System.Drawing.Size(0, 16);
+            this.stato.Size = new System.Drawing.Size(0, 18);
             this.stato.TabIndex = 19;
             // 
             // p_gioco
@@ -1134,6 +1141,7 @@ namespace Roulette
             this.p_gioco.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.p_gioco.Controls.Add(this.l_vincita);
             this.p_gioco.Controls.Add(this.btn_esci);
             this.p_gioco.Controls.Add(this.label1);
             this.p_gioco.Controls.Add(this.panel_tavolo);
@@ -1154,6 +1162,19 @@ namespace Roulette
             this.p_gioco.Size = new System.Drawing.Size(1028, 482);
             this.p_gioco.TabIndex = 22;
             this.p_gioco.Visible = false;
+            // 
+            // l_vincita
+            // 
+            this.l_vincita.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.l_vincita.AutoSize = true;
+            this.l_vincita.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.l_vincita.ForeColor = System.Drawing.Color.Gold;
+            this.l_vincita.Location = new System.Drawing.Point(34, 117);
+            this.l_vincita.Name = "l_vincita";
+            this.l_vincita.Size = new System.Drawing.Size(129, 27);
+            this.l_vincita.TabIndex = 27;
+            this.l_vincita.Text = "HAI VINTO ";
+            this.l_vincita.Visible = false;
             // 
             // btn_esci
             // 
@@ -1250,7 +1271,8 @@ namespace Roulette
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DarkGreen;
-            this.ClientSize = new System.Drawing.Size(1023, 478);
+            this.ClientSize = new System.Drawing.Size(1023, 507);
+            this.ControlBox = false;
             this.Controls.Add(this.p_inizio);
             this.Controls.Add(this.p_gioco);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -1358,6 +1380,7 @@ namespace Roulette
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Panel p_inizio;
         private System.Windows.Forms.Button btn_esci;
+        private System.Windows.Forms.Label l_vincita;
     }
 }
 
